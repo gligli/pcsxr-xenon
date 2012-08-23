@@ -21,6 +21,7 @@
 
 #include "stdafx.h"
 //#include "config.h"
+#include <assert.h>
 
 
 #define _IN_GPU
@@ -151,9 +152,9 @@ namespace xegpu {
 	int iSkipTwo = 0;
 }
 
-static inline void WaitForGpuDma();
-static inline void WaitForGpuRender();
+static inline void WaitForGpuThread();
 static void initGpuThread();
+EXTERN void CALLBACK GPUwriteDataMem(uint32_t *pMem, int iSize);
 
 ////////////////////////////////////////////////////////////////////////
 // stuff to make this a true PDK module
@@ -1021,7 +1022,7 @@ EXTERN void CALLBACK GPUwriteStatus(uint32_t gdata) {
 			//--------------------------------------------------//
 			// reset gpu
 		case 0x00:
-			WaitForGpuDma();
+			WaitForGpuThread();
 			memset(ulGPUInfoVals, 0x00, 16 * sizeof (uint32_t));
 			lGPUstatusRet = 0x14802000;
 			PSXDisplay.Disabled = 1;
@@ -1045,7 +1046,7 @@ EXTERN void CALLBACK GPUwriteStatus(uint32_t gdata) {
 
 			// dis/enable display
 		case 0x03:
-			WaitForGpuDma();
+			WaitForGpuThread();
 			PreviousPSXDisplay.Disabled = PSXDisplay.Disabled;
 			PSXDisplay.Disabled = (gdata & 1);
 
@@ -1068,7 +1069,7 @@ EXTERN void CALLBACK GPUwriteStatus(uint32_t gdata) {
 
 			// setting transfer mode
 		case 0x04:
-			WaitForGpuDma();
+			WaitForGpuThread();
 			gdata &= 0x03; // only want the lower two bits
 
 			iDataWriteMode = iDataReadMode = DR_NORMAL;
@@ -1083,7 +1084,7 @@ EXTERN void CALLBACK GPUwriteStatus(uint32_t gdata) {
 			// setting display position
 		case 0x05:
 		{
-			WaitForGpuDma();
+			WaitForGpuThread();
 			short sx = (short) (gdata & 0x3ff);
 			short sy;
 
@@ -1157,7 +1158,7 @@ EXTERN void CALLBACK GPUwriteStatus(uint32_t gdata) {
 
 			// setting width
 		case 0x06:
-			WaitForGpuDma();
+			WaitForGpuThread();
 			PSXDisplay.Range.x0 = gdata & 0x7ff; //0x3ff;
 			PSXDisplay.Range.x1 = (gdata >> 12) & 0xfff; //0x7ff;
 
@@ -1169,7 +1170,7 @@ EXTERN void CALLBACK GPUwriteStatus(uint32_t gdata) {
 
 			// setting height
 		case 0x07:
-			WaitForGpuDma();
+			WaitForGpuThread();
 			PreviousPSXDisplay.Height = PSXDisplay.Height;
 
 			PSXDisplay.Range.y0 = gdata & 0x3ff;
@@ -1188,7 +1189,7 @@ EXTERN void CALLBACK GPUwriteStatus(uint32_t gdata) {
 
 			// setting display infos
 		case 0x08:
-			WaitForGpuDma();
+			WaitForGpuThread();
 			PSXDisplay.DisplayModeNew.x = dispWidths[(gdata & 0x03) | ((gdata & 0x40) >> 4)];
 
 			if (gdata & 0x04) PSXDisplay.Double = 2;
@@ -1631,7 +1632,7 @@ void CheckVRamRead(int x, int y, int dx, int dy, BOOL bFront) {
 ////////////////////////////////////////////////////////////////////////
 
 EXTERN void CALLBACK GPUreadDataMem(uint32_t *pMem, int iSize) {
-	WaitForGpuDma();;
+	WaitForGpuThread();
 	int i;
 
 	if (iDataReadMode != DR_VRAMTRANSFER) return;
@@ -1893,11 +1894,6 @@ ENDVRAM:
 	GPUIsIdle;
 }
 
-EXTERN void CALLBACK GPUwriteDataMem(uint32_t *pMem, int iSize) {
-	WaitForGpuDma();
-	_GPUwriteDataMem(pMem,iSize);
-}
-
 ////////////////////////////////////////////////////////////////////////
 
 EXTERN void CALLBACK GPUwriteData(uint32_t gdata) {
@@ -1944,11 +1940,79 @@ __inline BOOL CheckForEndlessLoop(uint32_t laddr) {
 // core gives a dma chain to gpu: same as the gpuwrite interface funcs
 ////////////////////////////////////////////////////////////////////////
 
-EXTERN long CALLBACK _GPUdmaChain(uint32_t *baseAddrL, uint32_t addr) {
-	uint32_t dmaMem;
+////////////////////////////////////////////////////////////////////////
+
+#define MAX_TW_SIZE 0x100000
+
+// Gpu Thread
+static volatile bool running=false;
+
+
+static volatile __attribute__((aligned(128))) u8 tw_data[2][MAX_TW_SIZE];
+static volatile int tw_size[2];
+static volatile int tw_cur=0;
+static volatile bool tw_pending=false;
+static volatile bool tw_working=false;
+
+static volatile bool gpu_render_needed=false;
+
+static unsigned char thread_stack[0x100000];
+
+#include <xenon_soc/xenon_power.h>
+
+static inline void WaitForGpuThread() {
+	while(tw_working||tw_pending||gpu_render_needed);
+}
+
+static inline void WaitForGpuThreadLesser() {
+    while(tw_pending||gpu_render_needed);
+}
+
+static void GpuThread() {
+	running = true;
+	while(running) {
+		if(tw_pending) {
+			
+            uint32_t* data=(uint32_t*)tw_data[tw_cur];
+            int size=tw_size[tw_cur];
+			
+			tw_cur=1-tw_cur;
+			
+			tw_working=true;
+			tw_pending=false;
+			
+            _GPUwriteDataMem(data,size);
+            
+			tw_working=false;
+		}
+
+		if(gpu_render_needed) {
+			// call the non threaded func
+			_GPUupdateLace();
+			gpu_render_needed = false;
+		}
+	}
+}
+
+void endGpuThread() {
+	running=false;
+    while(xenon_is_thread_task_running(5));
+}
+
+void initGpuThread() {
+	xenon_run_thread_task(5, &thread_stack[sizeof (thread_stack) - 0x100], (void*)GpuThread);
+    atexit(endGpuThread);
+}
+
+EXTERN long CALLBACK GPUdmaChain(uint32_t *baseAddrL, uint32_t addr) {
+    int twsz=0;
+    
+    uint32_t dmaMem;
 	unsigned char * baseAddrB;
 	short count;
 	unsigned int DMACommandCounter = 0;
+
+    WaitForGpuThreadLesser();
 
 	GPUIsBusy;
 
@@ -1966,68 +2030,44 @@ EXTERN long CALLBACK _GPUdmaChain(uint32_t *baseAddrL, uint32_t addr) {
 
 		dmaMem = addr + 4;
 
-		if (count > 0) _GPUwriteDataMem(&baseAddrL[dmaMem >> 2], count);
+		if (count > 0){
+            assert((twsz+count)*4<MAX_TW_SIZE);
+            memcpy((u8*)&tw_data[tw_cur][twsz*4],&baseAddrL[dmaMem >> 2],count*4);
+            twsz+=count;
+        }
 
 		addr = GETLE32(&baseAddrL[addr >> 2])&0xffffff;
 	} while (addr != 0xffffff);
 
 	GPUIsIdle;
 
+    tw_size[tw_cur]=twsz;
+    tw_pending=true;
+
 	return 0;
 }
 
-
-////////////////////////////////////////////////////////////////////////
-
-// Gpu Thread
-static volatile bool running=false;
-static volatile __attribute__((aligned(128))) uint32_t * gpuDmaMemShadow;
-static volatile uint32_t gpuDmaAddrShadow = 0;
-static volatile bool gpu_dma_write_needed=false;
-static volatile bool gpu_render_needed=false;
-static unsigned char thread_stack[0x10000];
-
-#include <xenon_soc/xenon_power.h>
-
-static inline void WaitForGpuDma() {
-	// only wait for gpu dma
-	while(gpu_dma_write_needed);
-}
-
-static inline void WaitForGpuRender() {
-	while(gpu_render_needed);
-}
-
-static void GpuThread() {
-	running = true;
-	while(running) {
-		if(gpu_dma_write_needed) {
-			// call the non threaded func
-			_GPUdmaChain((uint32_t*)gpuDmaMemShadow,(uint32_t)gpuDmaAddrShadow);
-			gpu_dma_write_needed = false;
-		}
-		if(gpu_render_needed) {
-			// call the non threaded func
-			_GPUupdateLace();
-			gpu_render_needed = false;
-		}
-	}
-}
-
-void initGpuThread() {
-	xenon_run_thread_task(5, &thread_stack[sizeof (thread_stack) - 0x100], (void*)GpuThread);
-}
-
-EXTERN long CALLBACK GPUdmaChain(uint32_t *baseAddrL, uint32_t addr) {
-	while(gpu_dma_write_needed || gpu_render_needed);
-	gpuDmaMemShadow = baseAddrL;
-	gpuDmaAddrShadow = addr;
-	gpu_dma_write_needed = true;
-	return 0;
-}
 EXTERN void CALLBACK GPUupdateLace(void) {
-	while(gpu_dma_write_needed || gpu_render_needed);
+	WaitForGpuThread();
 	gpu_render_needed = true;
+}
+
+EXTERN void CALLBACK GPUwriteDataMem(uint32_t *pMem, int iSize){
+    WaitForGpuThreadLesser();
+
+    assert(iSize*4<MAX_TW_SIZE);
+    
+    if (iSize==1)
+    {
+        *(uint32_t*)&tw_data[tw_cur][0]=*pMem;
+    }
+    else
+    {
+        memcpy((void*)&tw_data[tw_cur][0],pMem,iSize*4);
+    }
+    tw_size[tw_cur]=iSize;
+            
+    tw_pending=true;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -2060,7 +2100,7 @@ typedef struct GPUFREEZETAG {
 ////////////////////////////////////////////////////////////////////////
 
 EXTERN long CALLBACK GPUfreeze(uint32_t ulGetFreezeData, GPUFreeze_t * pF) {
-	while(gpu_dma_write_needed || gpu_render_needed);
+	WaitForGpuThread();
 	if (ulGetFreezeData == 2) {
 		int lSlotNum = *((int *) pF);
 		if (lSlotNum < 0) return 0;
@@ -2144,7 +2184,7 @@ EXTERN void CALLBACK GPUdisplayFlags(uint32_t dwFlags) {
 }
 
 EXTERN void CALLBACK GPUvBlank(int val) {
-	WaitForGpuRender();
+	WaitForGpuThread();
 	vBlank = val;
 }
 
