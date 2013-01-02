@@ -38,7 +38,7 @@ TARGET		:=  $(notdir $(CURDIR))
 BUILD		:=  build
 #SOURCES		:=  source/shaders lib/zlib source/libpcsxcore_df source/main  source/main/usb source/plugins/xenon_input source/plugins/xenon_audio_repair source/fakegl   source/plugins/cdr   source/plugins/xenon_gfx source/ppc #  source/plugins/gxvideo # source/dynarec
 PLUGINS_GPU	:=  source/plugins/peopsxgl source/plugins/xenon_gfx
-PLUGINS_SPU	:=  source/plugins/xenon_audio_repair #source/plugins/SPU source/plugins/xenon_audio_repair # source/plugins/xenon_audio #
+PLUGINS_SPU	:=  source/plugins/xenon_audio_repair # source/plugins/xenon_audio # source/plugins/SPU 
 PLUGINS_INPUT	:=  source/plugins/dfinput source/plugins/xenon_input source/plugins/Pokopom
 PLUGINS_MISC	:=      source/plugins/cdrcimg  
 PLUGINS		:=  $(PLUGINS_GPU) $(PLUGINS_SPU) $(PLUGINS_INPUT) $(PLUGINS_MISC) 
@@ -199,6 +199,6 @@ endif
 
 
 run: $(BUILD) $(OUTPUT).elf32
-	cp $(OUTPUT).elf32 /srv/tftp/tftpboot/xenon
-	$(PREFIX)strip /srv/tftp/tftpboot/xenon
+	cp $(OUTPUT).elf32 /tftpboot/xenon
+	$(PREFIX)strip /tftpboot/xenon
 

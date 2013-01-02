@@ -137,9 +137,9 @@ extern PluginTable plugins[];
 
 //#define cdfile "uda:/pcsxr/iso/medievil2.img.Z"
 
-//#define cdfile "uda0:/devkit/pcsxr/ff9.bin"
+#define cdfile "sda0:/devkit/pcsxr/Castlevanina - SOTN.bin"
 
-#define cdfile "uda0:/Tekken 3 (USA) (Track 1).bin"
+//#define cdfile "uda0:/tekken3.bin"
 
 
 //#define cdfile "uda:/pcsxr/iso/sfa.bin"
@@ -153,8 +153,7 @@ void printConfigInfo() {
 static void findDevices() {
 	for (int i = 3; i < STD_MAX; i++) {
 		if (devoptab_list[i]->structSize) {
-			//strcpy(device_list[device_list_size],devoptab_list[i]->name);
-			printf("%s:/", devoptab_list[i]->name);
+			printf("Device found: %s:/\n", devoptab_list[i]->name);
 		}
 	}
 }
@@ -204,6 +203,8 @@ extern "C" DISC_INTERFACE usb2mass_ops_0;
 extern "C" void init_miss();
 int main() {
 
+	printf("main\n");
+
 	xenos_init(VIDEO_MODE_HDMI_720P);
 	xenon_make_it_faster(XENON_SPEED_FULL);
 
@@ -215,10 +216,10 @@ int main() {
 	xenon_ata_init();
 	xenon_atapi_init();
 
-	fatInitDefault();
+	//fatInitDefault();
 	
-	char mount[10];
-	sprintf(mount, "uda0");
+	//char mount[10];
+	//sprintf(mount, "uda0");
 	//fatMount(mount, &usb2mass_ops_0, 0, 2, 64);
 	
 	ntfs_md *mounts;
@@ -266,18 +267,18 @@ int main() {
 	strcpy(Config.Bios, "SCPH1001.BIN"); // Use actual BIOS
 	//strcpy(Config.Bios, "scph7502.bin"); // Use actual BIOS
 	//strcpy(Config.Bios, "HLE"); // Use HLE
-	strcpy(Config.BiosDir, "uda0:/pcsxr/bios");
-	strcpy(Config.PatchesDir, "uda0:/pcsxr/patches_/");
+	strcpy(Config.BiosDir, "sda0:/devkit/pcsxr/bios");
+	strcpy(Config.PatchesDir, "sda0:/devkit/pcsxr/patches_/");
 
 	Config.PsxAuto = 1; // autodetect system
 	
 	Config.Cpu = CPU_DYNAREC;
 	//Config.Cpu =  CPU_INTERPRETER;
 
-	strcpy(Config.Mcd1, "uda0:/pcsxr/memcards/card1.mcd");
-	strcpy(Config.Mcd2, "uda0:/pcsxr/memcards/card2.mcd");
+	strcpy(Config.Mcd1, "sda0:/devkit/pcsxr/memcards/card1.mcd");
+	strcpy(Config.Mcd2, "sda0:/devkit/pcsxr/memcards/card2.mcd");
 
-	//useSoftGpu();
+	// useSoftGpu();
 	/*
 		strcpy(Config.Mcd1, "sda:/hdd1/xenon/memcards/card1.mcd");
 		strcpy(Config.Mcd2, "sda:/hdd1/xenon/memcards/card2.mcd");
@@ -297,6 +298,7 @@ int main() {
 			// Check for hle ...
 			if (Config.HLE == 1) {
 				printf("Can't continue ... bios not found ...\r\n");
+				//exit(0);
 			}
 
 			CheckCdrom();

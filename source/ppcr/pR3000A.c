@@ -1446,6 +1446,54 @@ static void recDIVU() {
         }
     }
 }
+#elif 1 // + 2 fps in castlevania opening
+static void recDIV() {
+    // Lo/Hi = Rs / Rt (signed)
+    int usehi;
+
+    if (IsConst(_Rs_) && iRegs[_Rs_].k == 0) {
+        MapConst(REG_LO, 0);
+        MapConst(REG_HI, 0);
+        return;
+    }
+    if (IsConst(_Rt_) && IsConst(_Rs_)) {
+        MapConst(REG_LO, (s32) iRegs[_Rs_].k / (s32) iRegs[_Rt_].k);
+        MapConst(REG_HI, (s32) iRegs[_Rs_].k % (s32) iRegs[_Rt_].k);
+        return;
+    }
+    
+    usehi = isPsxRegUsed(pc, REG_HI);
+    
+    DIVW(PutHWReg32(REG_LO), GetHWReg32(_Rs_), GetHWReg32(_Rt_));
+    if (usehi) {
+		MULLW(PutHWReg32(REG_HI), GetHWReg32(REG_LO), GetHWReg32(_Rt_));
+		SUBF(PutHWReg32(REG_HI), GetHWReg32(REG_HI), GetHWReg32(_Rs_));
+	}
+}
+
+static void recDIVU() {
+    // Lo/Hi = Rs / Rt (unsigned)
+    int usehi;
+     
+    if (IsConst(_Rs_) && iRegs[_Rs_].k == 0) {
+        MapConst(REG_LO, 0);
+        MapConst(REG_HI, 0);
+        return;
+    }
+    if (IsConst(_Rt_) && IsConst(_Rs_)) {
+        MapConst(REG_LO, (u32) iRegs[_Rs_].k / (u32) iRegs[_Rt_].k);
+        MapConst(REG_HI, (u32) iRegs[_Rs_].k % (u32) iRegs[_Rt_].k);
+        return;
+    }
+    
+    usehi = isPsxRegUsed(pc, REG_HI);
+    
+	DIVWU(PutHWReg32(REG_LO), GetHWReg32(_Rs_), GetHWReg32(_Rt_));
+	if (usehi) {
+		MULLW(PutHWReg32(REG_HI), GetHWReg32(REG_LO), GetHWReg32(_Rt_));
+		SUBF(PutHWReg32(REG_HI), GetHWReg32(REG_HI), GetHWReg32(_Rs_));
+	}
+}
 #else
 REC_FUNC(DIV);
 REC_FUNC(DIVU);
@@ -3279,4 +3327,3 @@ R3000Acpu psxRec = {
     recClear,
     recShutdown
 };
-

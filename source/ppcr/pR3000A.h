@@ -34,7 +34,7 @@
 #include "psxhle.h"
 
 /* defines */
-#define RECMEM_SIZE		(32*1024*1024)
+#define RECMEM_SIZE		(7*1024*1024)
 
 #define NUM_REGISTERS	34
 #undef _Op_
