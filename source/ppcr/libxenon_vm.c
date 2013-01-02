@@ -12,20 +12,24 @@
 #define PPC_OPCODE_B     18
 #define PPC_OPCODE_SHIFT 26
 
-#define CHECK_INVALID_CODE() assert(0);
+#define CHECK_INVALID_CODE() \
+	RLWINM(5,addr_emu,18,14,29); \
+	LIS(6,(u32)psxMemWLUT>>16); \
+	LWZX(5,6,5); \
+	CMPLWI(5,0); \
+	preWrite = ppcPtr; \
+	BEQ(0);
 
 
 int failsafeRec=0;
 
 void recCallDynaMem(int addr, int data, int type)
 {
-//	printf("%d %d %d\n",addr,data,type);
-
+	if(addr!=3)
+		MR(3, addr);
+		
 	if (type<MEM_SW)
 	{
-		if(addr!=3)
-			MR(3, addr);
-		
 		switch (type)
 		{
 			case MEM_LB:
@@ -52,7 +56,21 @@ void recCallDynaMem(int addr, int data, int type)
 	}
 	else
 	{
-		assert(0);
+		switch (type)
+		{
+			case MEM_SB:
+	            RLWINM(4, data, 0, 24, 31);
+				CALLFunc((u32) psxMemWrite8);
+				break;
+			case MEM_SH:
+	            RLWINM(4, data, 0, 16, 31);
+				CALLFunc((u32) psxMemWrite16);
+				break;
+			case MEM_SW:
+				MR(4, data);
+				CALLFunc((u32) psxMemWrite32);
+				break;
+		}
 	}
 }
 
@@ -60,6 +78,7 @@ void recCallDynaMemVM(int rs_reg, int rt_reg, memType type, int immed)
 {
 //	do_disasm=1;
 	
+	u32 * preWrite=NULL;
 	u32 * preCall=NULL;
 	u32 * old_ppcPtr=NULL;
 	
@@ -122,51 +141,28 @@ void recCallDynaMemVM(int rs_reg, int rt_reg, memType type, int immed)
 				LWBRX(data, 0, addr_host);
 				break;
 			}
-/*			case MEM_LWL:
-			{
-				ADDI(rd, rd, immed);
-				RLWINM(0, rd, 0, 30, 31);	// r0 = addr & 3
-				CMPWI(0, 0);
-				BNE(3); // /!\ branch to just after 'Skip over else'
-
-				int r = PutHWReg32( rt_reg );
-				LWZ(r, 0, rd);
-				break;
-			}
-			case MEM_LWR:
-			{
-				ADDI(rd, rd, immed);
-				RLWINM(0, rd, 0, 30, 31);	// r0 = addr & 3
-				CMPWI(0, 3);
-				BNE(4); // /!\ branch to just after 'Skip over else'
-
-				RLWINM(rd, rd, 0, 0, 29);	// addr &= 0xFFFFFFFC
-
-				int r = PutHWReg32( rt_reg );
-				LWZ(r, 0, rd);
-				break;
-			}
 			case MEM_SB:
 			{
-				int r = PutHWReg32( rt_reg );
-				STB(r, immed, rd);
-				CHECK_INVALID_CODE();
+//				LIS(addr_host,0x3050);
+				
+				STB(data, 0, addr_host);
 				break;
 			}
 			case MEM_SH:
 			{
-				int r = PutHWReg32( rt_reg );
-				STH(r, immed, rd);
-				CHECK_INVALID_CODE();
+//				LIS(addr_host,0x3052);
+				
+				STHBRX(data, 0, addr_host);
 				break;
 			}
 			case MEM_SW:
 			{
-				int r = PutHWReg32( rt_reg );
-				STW(r, immed, rd);
-				CHECK_INVALID_CODE();
+//				LIS(addr_host,0x3054);
+
+				CHECK_INVALID_CODE();				
+				STWBRX(data, 0, addr_host);
 				break;
-			}*/
+			}
 			default:
 				assert(0);
 		}
@@ -174,6 +170,14 @@ void recCallDynaMemVM(int rs_reg, int rt_reg, memType type, int immed)
 		// Skip over else
 		preCall = ppcPtr;
 		B(0);
+	}
+
+	if (preWrite!=NULL)
+	{
+		old_ppcPtr=ppcPtr;
+		ppcPtr=preWrite;
+		BEQ(old_ppcPtr-preWrite-1);
+		ppcPtr=old_ppcPtr;
 	}
 
 	recCallDynaMem(addr_emu, data, type);
@@ -207,8 +211,6 @@ static void * rewriteDynaMemVM(void* fault_addr)
 	
 	u32 * first_slow_op=op;
 
-//	disassemble((u32)fault_op,*fault_op);
-	
 	ppcPtr=fault_op;
 	B(first_slow_op-fault_op-1);
 	

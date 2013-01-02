@@ -61,8 +61,8 @@ u8 **psxMemRLUT = NULL;
 int psxMemInit() {
 	int i;
 
-	psxMemRLUT = (u8 **)malloc(0x10000 * sizeof(void *));
-	psxMemWLUT = (u8 **)malloc(0x10000 * sizeof(void *));
+	psxMemRLUT = (u8 **)memalign(0x10000,0x10000 * sizeof(void *));
+	psxMemWLUT = (u8 **)memalign(0x10000,0x10000 * sizeof(void *));
 	memset(psxMemRLUT, 0, 0x10000 * sizeof(void *));
 	memset(psxMemWLUT, 0, 0x10000 * sizeof(void *));
 

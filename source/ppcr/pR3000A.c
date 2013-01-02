@@ -2189,6 +2189,9 @@ REC_FUNC(SWL);
 REC_FUNC(SWR);
 
 static void recSB() {
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_SB,_Imm_);
+	return;
+	
 #if 0
 	if (IsConst(_Rs_)) {
 		u32 addr = iRegs[_Rs_].k + _Imm_;
@@ -2223,6 +2226,8 @@ static void recSB() {
 }
 
 static void recSH() {
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_SH,_Imm_);
+	return;
 	
 #if 0
 	if (IsConst(_Rs_)) {
@@ -2299,6 +2304,9 @@ static void recSH() {
 }
 
 static void recSW() {
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_SW,_Imm_);
+	return;
+	
 	// mem[Rs + Im] = Rt
 #if 0
 	if (IsConst(_Rs_)) {

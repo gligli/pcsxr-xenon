@@ -46,7 +46,7 @@
         LIW(0, (u32)_func); \
         MTCTR(0); \
         BCTRL(); \
-		printf("!!!!!!!! bctrl %p %p %p\n",_cur,_func,_off); \
+		printf("!!!!!!!! bctrl\n"); \
 	} \
 }
 
