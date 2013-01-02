@@ -19,6 +19,8 @@
 #define write32(val) *(u32*)ppcPtr = val; ppcPtr+=4;
 #define write64(val) *(u64*)ppcPtr = val; ppcPtr+=8;
 
+#if 0
+
 #define CALLFunc(FUNC) \
 { \
     u32 _func = (FUNC); \
@@ -30,6 +32,25 @@
         BCTRL(); \
     } \
 }
+
+#else
+
+#define CALLFunc(FUNC) \
+{ \
+    u32 * _func = (u32*)(FUNC); \
+    u32 * _cur = ppcPtr; \
+	s32 _off = _func-_cur-1; \
+	if (abs(_off)<0x7fffff) { \
+		BL(_off); \
+	} else { \
+        LIW(0, (u32)_func); \
+        MTCTR(0); \
+        BCTRL(); \
+		printf("!!!!!!!! bctrl %p %p %p\n",_cur,_func,_off); \
+	} \
+}
+
+#endif
 
 extern int cpuHWRegisters[NUM_HW_REGISTERS];
 

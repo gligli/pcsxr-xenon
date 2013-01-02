@@ -62,7 +62,8 @@ static void inline invalidateCache(u32 from, u32 to) {
 
 /* variable declarations */
 static u32 psxRecLUT[0x010000];
-char recMem[RECMEM_SIZE];
+
+__attribute__((aligned(65536),section(".bss.beginning.upper"))) char recMem[RECMEM_SIZE];
 static char recRAM[0x200000];
 static char recROM[0x080000];
 

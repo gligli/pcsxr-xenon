@@ -212,6 +212,9 @@
 #define B(DST) \
 	{INSTR = (0x48000000 | (((s32)(((DST)+1)<<2)) & 0x3fffffc));}
 
+#define BL(DST) \
+	{INSTR = (0x48000001 | (((s32)(((DST)+1)<<2)) & 0x3fffffc));}
+
 #define B_L(VAR) \
 	{B_FROM(VAR); INSTR = (0x48000000);}
 
