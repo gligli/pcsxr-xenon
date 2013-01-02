@@ -108,16 +108,16 @@ typedef struct {
 
 // Remember to invalidate the special registers if they are modified by compiler
 enum {
-    ARG1 = 3,
-    ARG2 = 4,
-    ARG3 = 5,
+    __OBSOLETE_ARG1 = 3,
+    __OBSOLETE_ARG2 = 4,
+    __OBSOLETE_ARG3 = 5,
     PSXREGS,	// ptr
     PSXMEM,		// ptr
     CYCLECOUNT,	// ptr
     PSXPC,	// ptr
     TARGETPTR,	// ptr
     TARGET,	// ptr
-    RETVAL,
+    __OBSOLETE_RETVAL,
     REG_RZERO,
     REG_WZERO
 };
@@ -131,5 +131,29 @@ typedef struct {
     void (*flush)(int hwreg);
     int private;
 } HWRegister;
+
+
+extern int do_disasm;
+extern char recMem[RECMEM_SIZE];
+extern iRegisters iRegs[34];
+
+int GetFreeHWReg();
+void InvalidateCPURegs();
+void DisposeHWReg(int index);
+void FlushHWReg(int index);
+void FlushAllHWReg();
+void MapPsxReg32(int reg);
+void FlushPsxReg32(int hwreg);
+int UpdateHWRegUsage(int hwreg, int usage);
+int GetHWReg32(int reg);
+int PutHWReg32(int reg);
+int GetSpecialIndexFromHWRegs(int which);
+int GetHWRegFromCPUReg(int cpureg);
+int MapRegSpecial(int which);
+void FlushRegSpecial(int hwreg);
+int GetHWRegSpecial(int which);
+int PutHWRegSpecial(int which);
+
+int disassemble(unsigned int a, unsigned int op);
 
 #endif

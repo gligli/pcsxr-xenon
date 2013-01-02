@@ -25,6 +25,7 @@
 #include "r3000a.h"
 #include "psxhw.h"
 #include <sys/mman.h>
+#include <malloc.h>
 
 #ifndef MAP_ANONYMOUS
 #define MAP_ANONYMOUS MAP_ANON
@@ -65,12 +66,12 @@ int psxMemInit() {
 	memset(psxMemRLUT, 0, 0x10000 * sizeof(void *));
 	memset(psxMemWLUT, 0, 0x10000 * sizeof(void *));
 
-	psxM = malloc(0x00220000);
+	psxM = memalign(0x10000,0x00220000);
 
 	psxP = &psxM[0x200000];
 	psxH = &psxM[0x210000];
 
-	psxR = (s8 *)malloc(0x00080000);
+	psxR = (s8 *)memalign(0x10000,0x00080000);
 
 	if (psxMemRLUT == NULL || psxMemWLUT == NULL || 
 		psxM == NULL || psxP == NULL || psxH == NULL) {

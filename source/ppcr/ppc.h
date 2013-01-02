@@ -11,7 +11,7 @@
 #include "psxcommon.h"
 #include "ppc_mnemonics.h"
 
-#define NUM_HW_REGISTERS 28
+#define NUM_HW_REGISTERS 20
 
 /* general defines */
 #define write8(val)  *(u8 *)ppcPtr = val; ppcPtr++;
@@ -22,7 +22,6 @@
 #define CALLFunc(FUNC) \
 { \
     u32 _func = (FUNC); \
-    ReleaseArgs(); \
     if ((_func & 0x1fffffc) == _func) { \
         BLA(_func); \
     } else { \
