@@ -61,7 +61,7 @@ static void inline invalidateCache(u32 from, u32 to) {
 }
 
 /* variable declarations */
-static u32 psxRecLUT[0x010000];
+__attribute__((aligned(65536))) u32 psxRecLUT[0x010000];
 
 __attribute__((aligned(65536),section(".bss.beginning.upper"))) char recMem[RECMEM_SIZE];
 static char recRAM[0x200000];
@@ -1368,38 +1368,6 @@ REC_FUNC(DIVU);
 #endif
 //End of * Register mult/div & Register trap logic  
 
-/* - memory access - */
-
-static void preMemRead() {
-    if (_Rs_ != _Rt_) {
-        DisposeHWReg(iRegs[_Rt_].reg);
-    }
-    ADDI(3, GetHWReg32(_Rs_), _Imm_);
-    if (_Rs_ == _Rt_) {
-        DisposeHWReg(iRegs[_Rt_].reg);
-    }
-    InvalidateCPURegs();
-}
-
-static void preMemWrite(int size) {
-    ADDI(3, GetHWReg32(_Rs_), _Imm_);
-
-    switch(size)
-    {
-        case 1:
-            RLWINM(4, GetHWReg32(_Rt_), 0, 24, 31);
-            break;
-        case 2:
-            RLWINM(4, GetHWReg32(_Rt_), 0, 16, 31);
-            break;
-        default:
-            MR(4, GetHWReg32(_Rt_));
-    }
-
-    InvalidateCPURegs();
-}
-
-
 static u32 sioRead32() {
 	u32 hard;
 	hard = sioRead8();
@@ -1417,11 +1385,9 @@ static u16 sioRead16() {
 }
 
 static void recLB() {
-	recCallDynaMemVM(_Rs_,_Rt_,MEM_LB,_Imm_);
-	return;
 	
     // Rt = mem[Rs + Im] (signed)
-#if 1
+#ifdef CONSTIFY_READS
     if (IsConst(_Rs_)) {
         u32 addr = iRegs[_Rs_].k + _Imm_;
         int t = addr >> 16;
@@ -1521,19 +1487,14 @@ static void recLB() {
         //	SysPrintf("unhandled r8 %x\n", addr);
     }
 #endif
-    preMemRead();
-    CALLFunc((u32) psxMemRead8);
-    if (_Rt_) {
-        EXTSB(PutHWReg32(_Rt_), 3);
-    }
+
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_LB,_Imm_);
 }
 
 static void recLBU() {
-	recCallDynaMemVM(_Rs_,_Rt_,MEM_LBU,_Imm_);
-	return;
 	
     // Rt = mem[Rs + Im] (unsigned)
-#if 1
+#ifdef CONSTIFY_READS
     if (IsConst(_Rs_)) {
         u32 addr = iRegs[_Rs_].k + _Imm_;
         int t = addr >> 16;
@@ -1625,22 +1586,16 @@ static void recLBU() {
         //	SysPrintf("unhandled r8 %x\n", addr);
     }
 #endif
-    preMemRead();
-    CALLFunc((u32) psxMemRead8);
 
-    if (_Rt_) {
-        MR(PutHWReg32(_Rt_),3);
-    }
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_LBU,_Imm_);
 }
 
 
 
 static void recLH() {
-	recCallDynaMemVM(_Rs_,_Rt_,MEM_LH,_Imm_);
-	return;
-	
+
     // Rt = mem[Rs + Im] (signed)
-#if 1
+#ifdef CONSTIFY_READS
     if (IsConst(_Rs_)) {
         u32 addr = iRegs[_Rs_].k + _Imm_;
         int t = addr >> 16;
@@ -1794,19 +1749,14 @@ static void recLH() {
         //	SysPrintf("unhandled r16 %x\n", addr);
     }
 #endif
-    preMemRead();
-    CALLFunc((u32) psxMemRead16);
-    if (_Rt_) {
-        EXTSH(PutHWReg32(_Rt_), 3);
-    }
+    
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_LH,_Imm_);
 }
 
 static void recLHU() {
-	recCallDynaMemVM(_Rs_,_Rt_,MEM_LHU,_Imm_);
-	return;
-	
+
     // Rt = mem[Rs + Im] (unsigned)
-#if 1
+#ifdef CONSTIFY_READS
     if (IsConst(_Rs_)) {
         u32 addr = iRegs[_Rs_].k + _Imm_;
         int t = addr >> 16;
@@ -1950,21 +1900,14 @@ static void recLHU() {
         //	SysPrintf("unhandled r16u %x\n", addr);
     }
 #endif
-    preMemRead();
-    CALLFunc((u32) psxMemRead16);
-    if (_Rt_) {
-	    MR(PutHWReg32(_Rt_),3);
-    }
+    
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_LHU,_Imm_);
 }
-#if 1
-
 
 static void recLW() {
-	recCallDynaMemVM(_Rs_,_Rt_,MEM_LW,_Imm_);
-	return;
 	
     // Rt = mem[Rs + Im] (unsigned)
-
+#ifdef CONSTIFY_READS
     if (IsConst(_Rs_)) {
         u32 addr = iRegs[_Rs_].k + _Imm_;
         int t = addr >> 16;
@@ -2164,24 +2107,10 @@ static void recLW() {
         }
         //		SysPrintf("unhandled r32 %x\n", addr);
     }
-
-    preMemRead();
-    CALLFunc((u32) psxMemRead32);
-    if (_Rt_) {
-	    MR(PutHWReg32(_Rt_),3);
-    }
-}
-#else
-
-static void recLW(){
-	preMemRead();
-    CALLFunc((u32) psxMemRead32);
-    if (_Rt_) {
-        SetDstCPUReg(3);
-        PutHWReg32(_Rt_);
-    }
-}
 #endif
+
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_LW,_Imm_);
+}
 
 REC_FUNC(LWL);
 REC_FUNC(LWR);
@@ -2189,9 +2118,7 @@ REC_FUNC(SWL);
 REC_FUNC(SWR);
 
 static void recSB() {
-	recCallDynaMemVM(_Rs_,_Rt_,MEM_SB,_Imm_);
-	return;
-	
+
 #if 0
 	if (IsConst(_Rs_)) {
 		u32 addr = iRegs[_Rs_].k + _Imm_;
@@ -2221,14 +2148,12 @@ static void recSB() {
 		}
 	}
 #endif
-    preMemWrite(1);
-    CALLFunc((u32) psxMemWrite8);
+
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_SB,_Imm_);
 }
 
 static void recSH() {
-	recCallDynaMemVM(_Rs_,_Rt_,MEM_SH,_Imm_);
-	return;
-	
+
 #if 0
 	if (IsConst(_Rs_)) {
 		u32 addr = iRegs[_Rs_].k + _Imm_;
@@ -2299,13 +2224,11 @@ static void recSH() {
 //		SysPrintf("unhandled w16 %x\n", addr);
 	}
 #endif
-    preMemWrite(2);
-    CALLFunc((u32) psxMemWrite16);
+
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_SH,_Imm_);
 }
 
 static void recSW() {
-	recCallDynaMemVM(_Rs_,_Rt_,MEM_SW,_Imm_);
-	return;
 	
 	// mem[Rs + Im] = Rt
 #if 0
@@ -2390,8 +2313,8 @@ static void recSW() {
 
 	}
 #endif
-    preMemWrite(4);
-    CALLFunc((u32) psxMemWrite32);
+
+	recCallDynaMemVM(_Rs_,_Rt_,MEM_SW,_Imm_);
 }
 
 static void recSLL() {

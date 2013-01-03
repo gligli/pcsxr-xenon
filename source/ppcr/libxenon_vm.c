@@ -4,10 +4,10 @@
 #include "libxenon_vm.h"
 #include "ppc.h"
 #include "pR3000A.h"
-#include "psxmem.h"
+#include "../libpcsxcore/psxmem.h"
 
 #define MEMORY_VM_BASE 0x40000000
-#define MEMORY_VM_SIZE (1024*1024*1024)
+#define MEMORY_VM_SIZE (512*1024*1024)
 
 #define PPC_OPCODE_SHIFT 26
 
@@ -22,10 +22,18 @@
 #define CHECK_INVALID_CODE() \
 	RLWINM(5,addr_emu,18,14,29); \
 	LIS(6,(u32)psxMemWLUT>>16); \
-	LWZX(5,6,5); \
-	CMPLWI(5,0); \
+	LWZX(4,6,5); \
+	CMPLWI(4,0); \
 	preWrite = ppcPtr; \
 	BEQ(0);
+
+#define SET_INVALID_CODE(standalone) \
+	if (standalone) { RLWINM(5,addr_emu,18,14,29); } \
+	LIS(6,(u32)psxRecLUT>>16); \
+	LWZX(4,6,5); \
+	RLWINM(6,addr_emu,0,16,29); \
+	LI(5,0); \
+	STWX(5,4,6);
 
 
 int failsafeRec=0;
@@ -83,8 +91,6 @@ void recCallDynaMem(int addr, int data, int type)
 
 void recCallDynaMemVM(int rs_reg, int rt_reg, memType type, int immed)
 {
-//	do_disasm=1;
-	
 	u32 * preWrite=NULL;
 	u32 * preCall=NULL;
 	u32 * old_ppcPtr=NULL;
@@ -106,14 +112,14 @@ void recCallDynaMemVM(int rs_reg, int rt_reg, memType type, int immed)
 	{
 		RLWINM(REG_ADDR_HOST,addr_emu,0,3,31);
 		ADDIS(REG_ADDR_HOST,REG_ADDR_HOST,MEMORY_VM_BASE>>16);
-		NOP();
+		NOP(); // don't remove me (see rewriteDynaMemVM)
 
 		// Perform the actual load
 		switch (type)
 		{
 			case MEM_LB:
 			{
-//				LIS(addr_host,0x3040);
+//				LIS(REG_ADDR_HOST,0x3040);
 				
 				LBZ(data, 0, REG_ADDR_HOST);
 				EXTSB(data, data);
@@ -121,14 +127,14 @@ void recCallDynaMemVM(int rs_reg, int rt_reg, memType type, int immed)
 			}
 			case MEM_LBU:
 			{
-//				LIS(addr_host,0x3041);
+//				LIS(REG_ADDR_HOST,0x3041);
 				
 				LBZ(data, 0, REG_ADDR_HOST);
 				break;
 			}
 			case MEM_LH:
 			{
-//				LIS(addr_host,0x3042);
+//				LIS(REG_ADDR_HOST,0x3042);
 				
 				LHBRX(data, 0, REG_ADDR_HOST);
 				EXTSH(data, data);
@@ -136,38 +142,42 @@ void recCallDynaMemVM(int rs_reg, int rt_reg, memType type, int immed)
 			}
 			case MEM_LHU:
 			{
-//				LIS(addr_host,0x3043);
+//				LIS(REG_ADDR_HOST,0x3043);
 				
 				LHBRX(data, 0, REG_ADDR_HOST);
 				break;
 			}
 			case MEM_LW:
 			{
-//				LIS(addr_host,0x3044);
+//				LIS(REG_ADDR_HOST,0x3044);
 				
 				LWBRX(data, 0, REG_ADDR_HOST);
 				break;
 			}
 			case MEM_SB:
 			{
-//				LIS(addr_host,0x3050);
+//				LIS(REG_ADDR_HOST,0x3050);
 				
 				STB(data, 0, REG_ADDR_HOST);
+				SET_INVALID_CODE(1);
 				break;
 			}
 			case MEM_SH:
 			{
-//				LIS(addr_host,0x3052);
+//				LIS(REG_ADDR_HOST,0x3052);
 				
 				STHBRX(data, 0, REG_ADDR_HOST);
+				SET_INVALID_CODE(1);
 				break;
 			}
 			case MEM_SW:
 			{
-//				LIS(addr_host,0x3054);
-
 				CHECK_INVALID_CODE();				
+
+//				LIS(REG_ADDR_HOST,0x3054);
+
 				STWBRX(data, 0, REG_ADDR_HOST);
+				SET_INVALID_CODE(0);
 				break;
 			}
 			default:

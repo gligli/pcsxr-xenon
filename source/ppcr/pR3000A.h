@@ -74,6 +74,8 @@
 #define ST_MAPPED   0x02
 
 //#define NO_CONSTANT
+//#define CONSTIFY_READS
+
 #ifdef NO_CONSTANT
 #define IsConst(reg) 0
 #else
@@ -132,7 +134,7 @@ typedef struct {
     int private;
 } HWRegister;
 
-
+extern u32 psxRecLUT[0x010000];
 extern int do_disasm;
 extern char recMem[RECMEM_SIZE];
 extern iRegisters iRegs[34];
