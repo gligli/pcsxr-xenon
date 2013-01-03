@@ -52,6 +52,8 @@ static __inline__ uint32_t __loadwordbytereverse(void *ptr) {
 
 #endif
 
+#define SCRATCHPAD_OFFSET 0xffc
+
 extern s8 *psxM;
 #define psxMs8(mem)		psxM[(mem) & 0x1fffff]
 #define psxMs16(mem)	(SWAP16(*(s16 *)&psxM[(mem) & 0x1fffff]))

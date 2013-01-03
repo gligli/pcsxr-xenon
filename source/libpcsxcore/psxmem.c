@@ -66,10 +66,10 @@ int psxMemInit() {
 	memset(psxMemRLUT, 0, 0x10000 * sizeof(void *));
 	memset(psxMemWLUT, 0, 0x10000 * sizeof(void *));
 
-	psxM = memalign(0x10000,0x00220000);
+	psxM = memalign(0x10000,0x00230000);
 
 	psxP = &psxM[0x200000];
-	psxH = &psxM[0x210000];
+	psxH = &psxM[0x210000+SCRATCHPAD_OFFSET];
 
 	psxR = (s8 *)memalign(0x10000,0x00080000);
 

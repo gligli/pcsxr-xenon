@@ -53,7 +53,7 @@ INCLUDES	:=  shaders include lib/zlib source/libpcsxcore $(GUI_INC)
 # options for code generation
 #---------------------------------------------------------------------------------
 ASFLAGS	= -Wa,$(INCLUDE) -Wa,-a32
-CFLAGS	=  -ffunction-sections -fdata-sections -g -O4 -fno-tree-vectorize -fno-tree-slp-vectorize -ftree-vectorizer-verbose=1 -Wall $(MACHDEP) $(INCLUDE) -DLIBXENON -D__BIG_ENDIAN__ -D__ppc__ -D__powerpc__ -D__POWERPC__ -DELF -D__BIGENDIAN__ -D__PPC__ -D__BIGENDIAN__ $(GUI_FLAGS)
+CFLAGS	=  -ffunction-sections -fdata-sections -g -O4 -fno-tree-vectorize -fno-tree-slp-vectorize -ftree-vectorizer-verbose=1 -Wall -Wno-format $(MACHDEP) $(INCLUDE) -DLIBXENON -D__BIG_ENDIAN__ -D__ppc__ -D__powerpc__ -D__POWERPC__ -DELF -D__BIGENDIAN__ -D__PPC__ -D__BIGENDIAN__ $(GUI_FLAGS)
 
 CXXFLAGS	=	$(CFLAGS)
 
