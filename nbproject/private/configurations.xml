@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="84">
-  <projectmakefile>/home/ced/xenon/pcsxr/Makefile</projectmakefile>
+  <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Default" type="0">
       <toolsSet>
-        <developmentServer>localhost</developmentServer>
+        <developmentServer>root@x360dev:22</developmentServer>
         <platform>2</platform>
       </toolsSet>
       <dbx_gdbdebugger version="1">
@@ -32,8 +32,8 @@
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
         <environment>
-          <variable name="DEVKITXENON" value="&quot;/usr/local/xenon&quot;"/>
-          <variable name="PATH" value="&quot;$PATH:$DEVKITXENON/bin:$DEVKITXENON/usr/bin&quot;"/>
+          <variable name="DEVKITXENON" value="/usr/local/xenon"/>
+          <variable name="PATH" value="$PATH:$DEVKITXENON/bin:$DEVKITXENON/usr/bin"/>
         </environment>
       </runprofile>
     </conf>

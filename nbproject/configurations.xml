@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df name="pcsxr" root="/home/ced/xenon/pcsxr">
-      <df name="build">
-      </df>
+    <df name="pcsxr-xenon" root=".">
       <df name="include">
         <df name="sys">
           <in>mman.h</in>
@@ -162,11 +160,12 @@
           <in>sio.c</in>
           <in>sio.h</in>
           <in>sjisfont.h</in>
-          <in>socket.c</in>
           <in>socket.h</in>
           <in>spu.c</in>
           <in>spu.h</in>
           <in>system.h</in>
+        </df>
+        <df name="libpcsxcore">
         </df>
         <df name="main">
           <in>gamecube_plugins.h</in>
@@ -184,68 +183,6 @@
           <in>sys.c</in>
           <in>x_thread.c</in>
           <in>x_thread.h</in>
-        </df>
-        <df name="oldgui">
-          <df name="fonts">
-          </df>
-          <df name="images">
-            <df name="psd">
-            </df>
-          </df>
-          <df name="lang">
-          </df>
-          <df name="libwiigui">
-            <in>gui.h</in>
-            <in>gui_button.cpp</in>
-            <in>gui_element.cpp</in>
-            <in>gui_filebrowser.cpp</in>
-            <in>gui_image.cpp</in>
-            <in>gui_imagedata.cpp</in>
-            <in>gui_keyboard.cpp</in>
-            <in>gui_optionbrowser.cpp</in>
-            <in>gui_savebrowser.cpp</in>
-            <in>gui_sound.cpp</in>
-            <in>gui_text.cpp</in>
-            <in>gui_trigger.cpp</in>
-            <in>gui_window.cpp</in>
-          </df>
-          <df name="shader">
-            <in>ps.c.h</in>
-            <in>ps.t.h</in>
-            <in>ps.tc.h</in>
-            <in>vs.h</in>
-          </df>
-          <df name="sounds">
-          </df>
-          <in>FreeTypeGX.cpp</in>
-          <in>FreeTypeGX.h</in>
-          <in>Vec.h</in>
-          <in>VecMatrix.cpp</in>
-          <in>VecVector.cpp</in>
-          <in>_pnginfo.h</in>
-          <in>demo.h</in>
-          <in>filelist.h</in>
-          <in>g_filebrowser.cpp</in>
-          <in>g_filebrowser.h</in>
-          <in>g_video.cpp</in>
-          <in>g_video.h</in>
-          <in>gettext.cpp</in>
-          <in>gettext.h</in>
-          <in>gui_audio.cpp</in>
-          <in>gui_audio.h</in>
-          <in>gui_debug.h</in>
-          <in>gui_input.cpp</in>
-          <in>gui_oggplayer.c</in>
-          <in>gui_romlist.h</in>
-          <in>gui_screencapture.c</in>
-          <in>gui_utils.cpp</in>
-          <in>gui_wchar.c</in>
-          <in>gui_wchar.h</in>
-          <in>input.h</in>
-          <in>oggplayer.h</in>
-          <in>pngu.c</in>
-          <in>pngu.h</in>
-          <in>w_input.h</in>
         </df>
         <df name="plugins">
           <df name="cdr">
@@ -476,6 +413,17 @@
           </df>
         </df>
         <df name="ppcr">
+          <df name="disasm">
+            <in>asm_ppc.c</in>
+            <in>dis-asm.h</in>
+            <in>mybfd.h</in>
+            <in>opintl.h</in>
+            <in>ppc-dis.c</in>
+            <in>ppc-opc.c</in>
+            <in>ppc.h</in>
+          </df>
+          <in>libxenon_vm.c</in>
+          <in>libxenon_vm.h</in>
           <in>pR3000A.c</in>
           <in>pR3000A.h</in>
           <in>pasm.S</in>
@@ -485,3961 +433,1310 @@
           <in>reguse.c</in>
           <in>reguse.h</in>
         </df>
-        <df name="xenon">
-          <df name="gui">
-            <in>gui.h</in>
-            <in>gui_button.cpp</in>
-            <in>gui_element.cpp</in>
-            <in>gui_filebrowser.cpp</in>
-            <in>gui_image.cpp</in>
-            <in>gui_imagedata.cpp</in>
-            <in>gui_keyboard.cpp</in>
-            <in>gui_optionbrowser.cpp</in>
-            <in>gui_savebrowser.cpp</in>
-            <in>gui_sound.cpp</in>
-            <in>gui_text.cpp</in>
-            <in>gui_trigger.cpp</in>
-            <in>gui_window.cpp</in>
-          </df>
-          <df name="images">
-          </df>
-          <df name="shaders">
-            <df name="filters">
-            </df>
-            <df name="twinaphex-common-shaders">
-              <df name="auto-box">
-              </df>
-              <df name="Bicubic">
-              </df>
-              <df name="Borders">
-                <df name="Border-Aspect">
-                </df>
-                <df name="Border-Centered">
-                </df>
-                <df name="Border-Left-Portrait">
-                </df>
-                <df name="Menu">
-                </df>
-              </df>
-              <df name="CRT">
-              </df>
-              <df name="Eagle">
-              </df>
-              <df name="Handheld">
-              </df>
-              <df name="HQx">
-              </df>
-              <df name="Lanczos">
-              </df>
-              <df name="Misc">
-              </df>
-              <df name="Motionblur">
-              </df>
-              <df name="Mudlord">
-              </df>
-              <df name="Neon">
-              </df>
-              <df name="Quad">
-              </df>
-              <df name="Scalex">
-              </df>
-              <df name="Waterpaint">
-              </df>
-              <df name="xBR">
-                <df name="hlsl">
-                </df>
-                <df name="Legacy">
-                </df>
-              </df>
-              <df name="xSaI">
-              </df>
-              <df name="xSaL">
-              </df>
-              <df name="xSoft">
-              </df>
-            </df>
-            <in>2xBR-v3.5a.ps.h</in>
-            <in>2xBR-v3.5a.vs.h</in>
-            <in>5xBR-v3.7a.ps.h</in>
-            <in>5xBR-v3.7a.vs.h</in>
-            <in>5xBR-v3.7b.ps.h</in>
-            <in>5xBR-v3.7b.vs.h</in>
-            <in>5xBR-v3.7c.ps.h</in>
-            <in>5xBR-v3.7c.vs.h</in>
-            <in>crt.ps.h</in>
-            <in>crt.vs.h</in>
-            <in>hq4x.ps.h</in>
-            <in>hq4x.vs.h</in>
-            <in>ps.c.h</in>
-            <in>ps.t.h</in>
-            <in>ps.tc.h</in>
-            <in>s2xsal.ps.h</in>
-            <in>s2xsal.vs.h</in>
-            <in>scanline.ps.h</in>
-            <in>scanline.vs.h</in>
-            <in>simple.ps.h</in>
-            <in>simple.vs.h</in>
-            <in>vs.h</in>
-          </df>
-          <df name="utils">
-            <in>gettext.cpp</in>
-            <in>gettext.h</in>
-          </df>
-          <in>FreeTypeGX.cpp</in>
-          <in>FreeTypeGX.h</in>
-          <in>Vec.h</in>
-          <in>VecMatrix.cpp</in>
-          <in>VecVector.cpp</in>
-          <in>_pnginfo.h</in>
-          <in>_wchar.h</in>
-          <in>audio.cpp</in>
-          <in>audio.h</in>
-          <in>button_mapping.c</in>
-          <in>button_mapping.h</in>
-          <in>cheatmgr.cpp</in>
-          <in>filebrowser.cpp</in>
-          <in>filebrowser.h</in>
-          <in>filelist.h</in>
-          <in>fileop.cpp</in>
-          <in>fileop.h</in>
-          <in>filter.h</in>
-          <in>freeze.cpp</in>
-          <in>freeze.h</in>
-          <in>gcunzip.cpp</in>
-          <in>gcunzip.h</in>
-          <in>input.cpp</in>
-          <in>input.h</in>
-          <in>memory.h</in>
-          <in>menu.cpp</in>
-          <in>menu.h</in>
-          <in>oggplayer.c</in>
-          <in>oggplayer.h</in>
-          <in>pngu.c</in>
-          <in>pngu.h</in>
-          <in>preferences.cpp</in>
-          <in>preferences.h</in>
-          <in>s9xsupport.cpp</in>
-          <in>screencapture.c</in>
-          <in>snes9gx_video.cpp</in>
-          <in>snes9xgx.cpp</in>
-          <in>snes9xgx.h</in>
-          <in>sram.cpp</in>
-          <in>sram.h</in>
-          <in>video.cpp</in>
-          <in>video.h</in>
-          <in>w_input.h</in>
-          <in>wchar.c</in>
-          <in>xenon.c</in>
-        </df>
         <in>config.h</in>
       </df>
     </df>
-    <logicalFolder name="source"
-                   displayName="source"
-                   projectFiles="true"
-                   root="../../../cc/xenon/pcsxr-xenon/source">
-      <logicalFolder name="gui" displayName="gui" projectFiles="true">
-        <logicalFolder name="libwiigui" displayName="libwiigui" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_button.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_element.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_filebrowser.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_image.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_imagedata.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_optionbrowser.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_savebrowser.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_sound.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_text.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_trigger.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_window.cpp</itemPath>
-        </logicalFolder>
-        <logicalFolder name="shader" displayName="shader" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/shader/ps.c.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/shader/ps.t.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/shader/vs.h</itemPath>
-        </logicalFolder>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/FreeTypeGX.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/FreeTypeGX.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/Vec.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/VecMatrix.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/VecVector.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/_pnginfo.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/filelist.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/g_filebrowser.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/g_filebrowser.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/g_video.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/g_video.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/gettext.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/gui_audio.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/gui_input.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/gui_screencapture.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/gui_utils.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/gui_wchar.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/gui/w_input.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="httpd" displayName="httpd" projectFiles="true">
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/httpd/fsdata.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/httpd/httpd.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/httpd/httpd.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/httpd/screen.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/httpd/tftp.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/httpd/vfs.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/httpd/vfs.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="libpcsxcore" displayName="libpcsxcore" projectFiles="true">
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/cdriso.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/cdrom.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/cdrom.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/cheat.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/cheat.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/coff.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/debug.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/decode_xa.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/decode_xa.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/disr3000a.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/gpu.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/gte.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/gte_divider.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/mdec.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/misc.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/misc.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/plugins.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/plugins.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/ppf.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psemu_plugin_defs.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxbios.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxbios.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxcommon.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxcommon.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxcounters.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxcounters.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxdma.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxhle.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxhle.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxhw.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxinterpreter.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxmem.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxmem.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/r3000a.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/r3000a.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/sio.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/sio.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/sjisfont.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/socket.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/spu.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="main" displayName="main" projectFiles="true">
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/gamecube_plugins.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/gui.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/libxenon_miss.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/main.cpp</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/no_debug.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/plugin.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/profile.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/screencapture.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/sys.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/main/x_thread.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="plugins" displayName="plugins" projectFiles="true">
-        <logicalFolder name="cdrcimg" displayName="cdrcimg" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/cdrcimg/cdrcimg.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="dfinput" displayName="dfinput" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_analog.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_cfg.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_pad.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_sdljoy.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_xkb.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/pad.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="peopsxgl" displayName="peopsxgl" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/GpuRenderer.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/GpuRenderer.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/cfg.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/cfg.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/draw.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/externals.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/fps.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/gpu_types.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/gte_accuracy.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/hw_gpu.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/prim.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/soft.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/stdafx.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/swap.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/tex2Sai.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture_load.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture_load_wnd.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture_movie.cpp</itemPath>
-        </logicalFolder>
-        <logicalFolder name="Pokopom" displayName="Pokopom" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Codes_IDs.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/ConfigDialog.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Controller.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Controller.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/ControllerGuitar.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/FileIO.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Main.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/PSemuPro_Interface.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Settings.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Settings.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Xinput.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/pokoMain.cpp</itemPath>
-        </logicalFolder>
-        <logicalFolder name="SPU" displayName="SPU" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/PEOPSspu.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/adsr.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/cube_audio.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/dma.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/externals.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/externals.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/freeze.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/gauss_i.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/psemu.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/psemuxa.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/registers.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/reverb.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/spucfg.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/xa.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="xenon_audio_repair"
-                       displayName="xenon_audio_repair"
-                       projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_adsr.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_cfg.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_dma.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_freeze.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_psemu.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_registers.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_reverb.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_spu.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_xa.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_zn.cpp</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/externals.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/freeze.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/gauss_i.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/psemuxa.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/xr_xenonsnd.cpp</itemPath>
-        </logicalFolder>
-        <logicalFolder name="xenon_gfx" displayName="xenon_gfx" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/externals.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/interp.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/swap.h</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_cfg.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_draw.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_fps.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_gpu.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_prim.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_soft.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="xenon_input" displayName="xenon_input" projectFiles="true">
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_input/pad.c</itemPath>
-          <itemPath>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_input/pad.h</itemPath>
-        </logicalFolder>
-      </logicalFolder>
-      <logicalFolder name="ppcr" displayName="ppcr" projectFiles="true">
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/ppcr/pR3000A.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/ppcr/pR3000A.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/ppcr/ppc.c</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/ppcr/ppc.h</itemPath>
-        <itemPath>../../../cc/xenon/pcsxr-xenon/source/ppcr/reguse.c</itemPath>
-      </logicalFolder>
-    </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>/home/ced/xenon/pcsxr/Makefile</itemPath>
+      <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
-    <Elem>/home/ced/xenon/pcsxr</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
-  <projectmakefile>/home/ced/xenon/pcsxr/Makefile</projectmakefile>
+  <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Default" type="0">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>default</compilerSet>
+        <compilerSet>Xenon|GNU</compilerSet>
       </toolsSet>
       <codeAssistance>
       </codeAssistance>
       <makefileType>
         <makeTool>
-          <buildCommandWorkingDir>/home/ced/xenon/pcsxr</buildCommandWorkingDir>
-          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile run</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath></executablePath>
+          <cTool>
+            <preprocessorList>
+              <Elem>XENON</Elem>
+            </preprocessorList>
+          </cTool>
+          <ccTool>
+            <preprocessorList>
+              <Elem>XENON</Elem>
+            </preprocessorList>
+          </ccTool>
         </makeTool>
       </makefileType>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/FreeTypeGX.cpp"
+      <folder path="pcsxr-xenon/source/gui">
+        <cTool>
+          <incDir>
+            <pElem>source/gui</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>source/gui</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/gui/libwiigui">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon_stable/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
+            <pElem>source/gui/libwiigui</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+            <pElem>/usr/local/xenon/usr/include/freetype2/freetype/config</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/httpd">
+        <cTool>
+          <incDir>
+            <pElem>source/httpd</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>source/httpd</pElem>
+            <pElem>/usr/local/xenon_stable/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/libpcsxcore">
+        <cTool>
+          <incDir>
+            <pElem>source/libpcsxcore</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/main">
+        <cTool>
+          <incDir>
+            <pElem>source/main</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/input</pElem>
+            <pElem>source/libpcsxcore</pElem>
+            <pElem>source/gui</pElem>
+            <pElem>/usr/local/xenon_stable/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
+            <pElem>source/gui/libwiigui</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>source/main</pElem>
+            <pElem>build</pElem>
+            <pElem>/usr/local/xenon/usr/include/freetype2/freetype/config</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/plugins">
+        <cTool>
+          <incDir>
+            <pElem>build</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/plugins/Pokopom">
+        <ccTool>
+          <incDir>
+            <pElem>source/plugins/Pokopom</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/plugins/cdrcimg">
+        <cTool>
+          <incDir>
+            <pElem>source/plugins/cdrcimg</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/plugins/dfinput">
+        <cTool>
+          <incDir>
+            <pElem>source/plugins/dfinput</pElem>
+            <pElem>/usr/local/xenon/usr/include/input</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/plugins/peopsxgl">
+        <ccTool>
+          <incDir>
+            <pElem>source/plugins/peopsxgl</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/plugins/xenon_audio_repair">
+        <ccTool>
+          <incDir>
+            <pElem>build</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/plugins/xenon_gfx">
+        <cTool>
+          <incDir>
+            <pElem>source/plugins/xenon_gfx</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/plugins/xenon_input">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/input</pElem>
+            <pElem>source/libpcsxcore</pElem>
+            <pElem>source/plugins/xenon_input</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="pcsxr-xenon/source/ppcr">
+        <cTool>
+          <incDir>
+            <pElem>source/ppcr</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <item path="include/config.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="include/draw_c_p_psu.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="include/draw_t_p_psu.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="include/draw_v_vsu.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/fxaa_v2.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/hq4x.ps.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/hq4x.vs.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/post.ps.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/post.vs.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/s2xsai.ps.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/s2xsai.vs.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/scale2x.ps.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/scale2x.vs.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/xbr_2x_ps.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/xbr_2x_vs.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/xbr_5x_crt_ps.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/xbr_5x_crt_vs.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/xbr_5x_psx_ps.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="shaders/xbr_5x_psx_vs.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/gui/FreeTypeGX.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon_stable/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
+            <pElem>/usr/local/xenon/usr/include/freetype2/freetype</pElem>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/VecMatrix.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/gui/VecVector.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/gui/demo.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/gui/g_filebrowser.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/sys</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/g_video.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+            <pElem>source/gui/shader</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/gettext.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/gui_audio.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>build</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/gui_audio.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/gui/gui_input.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/input</pElem>
+            <pElem>/usr/local/xenon_stable/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
+            <pElem>source/gui/libwiigui</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+            <pElem>/usr/local/xenon/usr/include/freetype2/freetype/config</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/gui_oggplayer.c" ex="true" tool="0" flavor2="0">
+      </item>
+      <item path="source/gui/gui_screencapture.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+            <pElem>/usr/local/xenon/usr/include/libpng15</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/gui/gui_utils.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>build</pElem>
+            <pElem>/usr/local/xenon/usr/include/libpng15</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/gui_wchar.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_button.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_element.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_filebrowser.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
-            <pElem>/usr/local/xenon/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_image.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_imagedata.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include/libpng15</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_keyboard.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/gui/libwiigui/gui_optionbrowser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_savebrowser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_sound.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/gui/libwiigui/gui_text.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
             <pElem>/usr/local/xenon/usr/include/freetype2/freetype</pElem>
             <pElem>/usr/local/xenon/usr/include/xenos</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/VecMatrix.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/VecVector.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/g_filebrowser.cpp"
+      <item path="source/gui/libwiigui/gui_trigger.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>/usr/local/xenon/usr/include/ppc</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/g_video.cpp"
+      <item path="source/gui/libwiigui/gui_window.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/gui/shader</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/gettext.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </ccTool>
+      <item path="source/gui/pngu.c" ex="true" tool="0" flavor2="0">
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/gui_audio.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </ccTool>
+      <item path="source/gui/shader/ps.tc.h" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/gui_input.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
-            <pElem>/usr/local/xenon/usr/include/input</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui</pElem>
-            <pElem>/usr/local/xenon/usr/include/freetype2/freetype/config</pElem>
-          </incDir>
-        </ccTool>
+      <item path="source/httpd/fsdata.c" ex="true" tool="0" flavor2="0">
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/gui_screencapture.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/httpd/httpd.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>/usr/local/xenon/usr/include/libpng15</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/gui_utils.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-            <pElem>/usr/local/xenon/usr/include/libpng15</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/gui_wchar.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_button.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_element.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_filebrowser.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_image.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_imagedata.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-            <pElem>/usr/local/xenon/usr/include/libpng15</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_optionbrowser.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_savebrowser.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_sound.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_text.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/usr/include/freetype2/freetype</pElem>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_trigger.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui/gui_window.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/httpd/httpd.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
             <pElem>/usr/local/xenon/usr/include/lwip</pElem>
             <pElem>/usr/local/xenon/usr/include/arch</pElem>
           </incDir>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/httpd/screen.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
+      <item path="source/httpd/screen.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/httpd/tftp.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/httpd/tftp.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>/usr/local/xenon/usr/include/ppc</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
             <pElem>/usr/local/xenon/usr/include/lwip</pElem>
             <pElem>/usr/local/xenon/usr/include/arch</pElem>
           </incDir>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/httpd/vfs.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/httpd/tftp.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/httpd/vfs.c" ex="false" tool="0" flavor2="2">
         <cTool>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/cdriso.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/libpcsxcore/cdriso.c" ex="false" tool="0" flavor2="2">
         <cTool>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/cdrom.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/cheat.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/decode_xa.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/disr3000a.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/gpu.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/gte.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/mdec.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/misc.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/plugins.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/ppf.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxbios.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxcommon.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxcounters.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxdma.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxhle.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxhw.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxinterpreter.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/psxmem.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/r3000a.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/sio.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/socket.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/libpcsxcore/cdrom.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>/usr/local/xenon/usr/include/lwip</pElem>
-            <pElem>/usr/local/xenon/usr/include/arch</pElem>
-            <pElem>/usr/local/xenon/usr/include/lwip/include/lwip</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
           </incDir>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/libpcsxcore/spu.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/libpcsxcore/cheat.c" ex="false" tool="0" flavor2="2">
         <cTool>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/main/libxenon_miss.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/libpcsxcore/decode_xa.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/disr3000a.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/gte.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/mdec.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
           </incDir>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/main/main.cpp"
+      <item path="source/libpcsxcore/misc.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/plugins.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/ppf.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/psxbios.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/psxcommon.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/psxcounters.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/psxdma.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/psxhle.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/psxhw.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/psxinterpreter.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/psxmem.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/r3000a.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/sio.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/libpcsxcore/socket.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/libpcsxcore/spu.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/main/gui.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/main/libxenon_miss.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/main/main.cpp" ex="true" tool="1" flavor2="0">
+      </item>
+      <item path="source/main/no_debug.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>source/libpcsxcore</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/main/plugin.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>source/libpcsxcore</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/main/plugin.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/main/profile.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/ppc</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/main/profile.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/main/screencapture.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/main/screencapture.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/main/sys.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>source/libpcsxcore</pElem>
+            <pElem>build</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="source/main/x_thread.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/main/x_thread.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/Pokopom/ConfigDialog.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/main/no_debug.c"
+      <item path="source/plugins/Pokopom/Controller.cpp"
             ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
+            tool="1"
+            flavor2="4">
+        <ccTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>build</pElem>
           </incDir>
-        </cTool>
+        </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/main/plugin.c"
+      <item path="source/plugins/Pokopom/Controller2.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/Pokopom/ControllerGuitar.cpp"
             ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
+            tool="1"
+            flavor2="4">
+        <ccTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>build</pElem>
           </incDir>
-        </cTool>
+        </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/main/profile.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
+      <item path="source/plugins/Pokopom/Exports.def" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/Pokopom/FileIO.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>build</pElem>
           </incDir>
-        </cTool>
+        </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/main/screencapture.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </cTool>
+      <item path="source/plugins/Pokopom/Main.h" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/main/sys.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/main/x_thread.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/ConfigDialog.cpp"
+      <item path="source/plugins/Pokopom/Settings.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Controller.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/ControllerGuitar.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/FileIO.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Settings.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/Xinput.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
+      <item path="source/plugins/Pokopom/Xinput.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
           <incDir>
             <pElem>/usr/local/xenon/usr/include/input</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>/usr/local/xenon/usr/include/ppc</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>build</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom/pokoMain.cpp"
+      <item path="source/plugins/Pokopom/pokoMain.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
-            <pElem>/usr/local/xenon/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>/usr/local/xenon_stable/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
+            <pElem>build</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/PEOPSspu.c"
+      <item path="source/plugins/Pokopom/resource.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/cdr/PlugCD.c" ex="true" tool="0" flavor2="0">
+      </item>
+      <item path="source/plugins/cdr/PlugCD.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/cdrcimg/cdrcimg.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/plugins/dfinput/inp_analog.c"
             ex="false"
             tool="0"
             flavor2="2">
         <cTool>
+        </cTool>
+      </item>
+      <item path="source/plugins/dfinput/inp_cfg.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/plugins/dfinput/inp_pad.c" ex="false" tool="0" flavor2="2">
+        <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU</pElem>
-            <pElem>/usr/local/xenon/usr/include/threads</pElem>
+            <pElem>source/libpcsxcore</pElem>
           </incDir>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/adsr.c"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/cube_audio.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/dma.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/externals.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/freeze.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/psemu.c"
+      <item path="source/plugins/dfinput/inp_sdljoy.c"
             ex="false"
             tool="0"
             flavor2="2">
         <cTool>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/registers.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/reverb.c"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/spucfg.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/SPU/xa.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/plugins/dfinput/inp_xkb.c" ex="false" tool="0" flavor2="2">
         <cTool>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/cdrcimg/cdrcimg.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_analog.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_cfg.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_pad.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_sdljoy.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput/inp_xkb.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/GpuRenderer.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/shaders</pElem>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/cfg.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/draw.cpp"
+      <item path="source/plugins/peopsxgl/GpuRenderer.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
             <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+            <pElem>shaders</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/fps.cpp"
+      <item path="source/plugins/peopsxgl/cfg.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>source/main</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/peopsxgl/draw.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/peopsxgl/gl_ext.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/peopsxgl/gte_accuracy.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/gte_accuracy.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
+      <item path="source/plugins/peopsxgl/hw_gpu.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/ppc</pElem>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/hw_gpu.cpp"
+      <item path="source/plugins/peopsxgl/interface.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/peopsxgl/interp.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/peopsxgl/prim.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/peopsxgl/soft.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/peopsxgl/texture.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
             <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/prim.cpp"
+      <item path="source/plugins/peopsxgl/texture_load.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
             <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/soft.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture.cpp"
+      <item path="source/plugins/peopsxgl/texture_load_wnd.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
             <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture_load.cpp"
+      <item path="source/plugins/peopsxgl/texture_movie.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
             <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
           </incDir>
         </ccTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture_load_wnd.cpp"
+      <item path="source/plugins/xenon_audio/adsr.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/cfg.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/dma.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/dsoundoss.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/externals.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/gauss_i.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/psemuxa.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/registers.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/regs.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/reverb.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/spu.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/stdafx.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_adsr.c" ex="true" tool="0" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_cfg.c" ex="true" tool="0" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_dma.c" ex="true" tool="0" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_externals.c"
+            ex="true"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_freeze.c"
+            ex="true"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_nullsnd.c"
+            ex="true"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_registers.c"
+            ex="true"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_reverb.c"
+            ex="true"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_spu.c" ex="true" tool="0" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_xa.c" ex="true" tool="0" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/x_xenonsnd.c"
+            ex="true"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio/xa.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair/WINRES.H"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_adsr.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_cfg.cpp"
             ex="false"
             tool="1"
             flavor2="4">
         <ccTool>
           <incDir>
+            <pElem>source/plugins/xenon_audio_repair</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_dma.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>source/plugins/xenon_audio_repair</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_freeze.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>source/plugins/xenon_audio_repair</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_psemu.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_registers.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>source/plugins/xenon_audio_repair</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_reverb.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_spu.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>source/plugins/xenon_audio_repair</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_xa.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/a_zn.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>source/plugins/xenon_audio_repair</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair/adsr.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair/afxres.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair/alsa.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair/oss.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair/xr_xenonsnd.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>source/plugins/xenon_audio_repair</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/WINRES.H"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/adsr.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/afxres.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/cfg.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/debug.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/dma.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/dsoundoss.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/externals.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/freeze.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/gauss_i.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/oss.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/psemuxa.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/record.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/registers.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/regs.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/resource.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/reverb.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/spu.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/stdafx.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xa.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_adsr.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_cfg.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_debug.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_dma.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_freeze.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_output.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_psemu.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_record.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_registers.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_reverb.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_spu.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_spuPeopsSound.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_stdafx.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/xr_xa.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_audio_repair110/zn.cpp"
+            ex="true"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_cdrom/cdr-null.c"
+            ex="true"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_cdrom/cdr.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_gfx/hq2x.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_gfx/hq3x.h" ex="true" tool="3" flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_gfx/v_cfg.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/plugins/xenon_gfx/v_draw.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/xenon/usr/include</pElem>
             <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl/texture_movie.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_adsr.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_cfg.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_dma.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_freeze.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_psemu.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_registers.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_reverb.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_spu.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_xa.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/a_zn.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair/xr_xenonsnd.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_audio_repair</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_cfg.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_draw.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/shaders</pElem>
-            <pElem>/usr/local/xenon/usr/include/xenos</pElem>
+            <pElem>shaders</pElem>
           </incDir>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_fps.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_gpu.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_prim.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx/v_soft.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_input/pad.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/ppcr/pR3000A.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/plugins/xenon_gfx/v_fps.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
+            <pElem>/usr/local/xenon/usr/include/ppc</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
           </incDir>
         </cTool>
       </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/ppcr/ppc.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool>
-        </cTool>
-      </item>
-      <item path="../../../cc/xenon/pcsxr-xenon/source/ppcr/reguse.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
+      <item path="source/plugins/xenon_gfx/v_gpu.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
+            <pElem>/usr/local/xenon/usr/include/ppc</pElem>
           </incDir>
         </cTool>
       </item>
-      <item path="/home/ced/xenon/pcsxr/include/config.h"
+      <item path="source/plugins/xenon_gfx/v_gpu_endian.c"
             ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/include/draw_c_p_psu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/include/draw_t_p_psu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/include/draw_v_vsu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/include/sys/mman.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/fxaa.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/fxaa.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/fxaa_v2.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/hq4x.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/hq4x.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/post.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/post.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/ps.h" ex="true" tool="3" flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/psx.ps.c.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/psx.ps.f.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/psx.ps.g.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/psx.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/psx.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/s2xsai.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/s2xsai.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/scale2x.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/scale2x.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/scaling.inc"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/vs.h" ex="true" tool="3" flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/xbr_2x_ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/xbr_2x_vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/xbr_5x_crt_ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/xbr_5x_crt_vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/xbr_5x_ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/xbr_5x_psx_ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/xbr_5x_psx_vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/shaders/xbr_5x_vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/config.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/FreeTypeGX.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/FreeTypeGX.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/Vec.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/VecMatrix.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/VecVector.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/_pnginfo.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/demo.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/filelist.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/g_filebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/g_filebrowser.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/g_video.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/g_video.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gettext.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gettext.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_audio.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_audio.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_debug.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_input.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_oggplayer.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_romlist.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_screencapture.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_utils.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_wchar.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/gui_wchar.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/input.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_button.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_element.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_filebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_image.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_imagedata.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_keyboard.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_optionbrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_savebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_sound.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_text.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_trigger.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/libwiigui/gui_window.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/oggplayer.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/pngu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/pngu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/shader/ps.c.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/shader/ps.t.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/shader/ps.tc.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/shader/vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/gui/w_input.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/fsdata.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/fsdata.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/httpd.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/httpd.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/screen.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/tftp.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/tftp.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/vfs.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/httpd/vfs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/cdriso.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/cdriso.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/cdrom.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/cdrom.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/cheat.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/cheat.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/coff.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/debug.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/decode_xa.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/decode_xa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/disr3000a.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/gpu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/gpu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/gte.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/gte.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/gte_divider.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/mdec.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/mdec.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/misc.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/misc.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/plugins.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/plugins.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/ppf.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/ppf.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psemu_plugin_defs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxbios.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxbios.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxcommon.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxcommon.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxcounters.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxcounters.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxdma.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxdma.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxhle.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxhle.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxhw.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxhw.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxinterpreter.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxmem.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/psxmem.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/r3000a.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/r3000a.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/sio.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/sio.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/sjisfont.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/socket.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/socket.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/spu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/spu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/libpcsxcore/system.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/gamecube_plugins.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/gui.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/gui.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/libxenon_miss.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/main.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/no_debug.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/plugin.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/plugin.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/profile.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/profile.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/screencapture.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/screencapture.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/sys.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/x_thread.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/main/x_thread.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/FreeTypeGX.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/FreeTypeGX.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/Vec.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/VecMatrix.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/VecVector.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/_pnginfo.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/demo.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/filelist.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/g_filebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/g_filebrowser.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/g_video.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/g_video.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gettext.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gettext.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_audio.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_audio.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_debug.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_input.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_oggplayer.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_romlist.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_screencapture.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_utils.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_wchar.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/gui_wchar.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/input.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_button.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_element.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_filebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_image.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_imagedata.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_keyboard.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_optionbrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_savebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_sound.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_text.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_trigger.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/libwiigui/gui_window.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/oggplayer.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/pngu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/pngu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/shader/ps.c.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/shader/ps.t.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/shader/ps.tc.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/shader/vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/oldgui/w_input.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Codes_IDs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/ConfigDialog.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/ConfigDialog.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Controller.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Controller.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Controller2.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/ControllerGuitar.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Exports.def"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/FileIO.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/FileIO.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/General.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Main.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/PSemuPro_Interface.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Settings.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Settings.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/Xinput.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/pokoMain.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/Pokopom/resource.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/PEOPSspu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/adsr.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/adsr.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/cube_audio.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/cube_audio.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/dma.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/dma.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/externals.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/externals.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/freeze.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/gauss_i.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/psemu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/psemuxa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/registers.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/registers.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/regs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/resource.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/reverb.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/reverb.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/spu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/spucfg.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/spucfg.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/stdafx.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/xa.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/SPU/xa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/cdr/PlugCD.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/cdr/PlugCD.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/cdrcimg/cdrcimg.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/cdrcimg/cdrcimg.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/dfinput/inp_analog.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/dfinput/inp_cfg.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/dfinput/inp_pad.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/dfinput/inp_sdljoy.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/dfinput/inp_xkb.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/dfinput/pad.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/GpuRenderer.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/GpuRenderer.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/cfg.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/cfg.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/draw.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/draw.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/externals.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/fps.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/fps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/gl_ext.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/gpu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/gpu_types.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/gte_accuracy.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/gte_accuracy.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/hw_gpu.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/interface.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/interp.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/prim.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/prim.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/soft.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/soft.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/stdafx.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/swap.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/tex2Sai.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/texture.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/texture.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/texture_load.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/texture_load.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/texture_load_wnd.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/texture_movie.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/peopsxgl/texture_movie.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/adsr.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/cfg.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/dma.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/dsoundoss.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/externals.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/gauss_i.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/psemuxa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/registers.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/regs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/reverb.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/spu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/stdafx.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_adsr.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_cfg.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_dma.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_externals.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_freeze.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_nullsnd.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_registers.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_reverb.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_spu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_xa.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/x_xenonsnd.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio/xa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/WINRES.H"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_adsr.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_cfg.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_dma.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_freeze.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_psemu.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_registers.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_reverb.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_spu.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_xa.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/a_zn.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/adsr.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/afxres.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/alsa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/cfg.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/debug.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/dma.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/dsoundoss.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/externals.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/freeze.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/gauss_i.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/oss.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/psemuxa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/record.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/registers.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/regs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/resource.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/reverb.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/spu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/stdafx.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/xa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/xaudio_2.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair/xr_xenonsnd.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/WINRES.H"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/adsr.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/afxres.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/cfg.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/debug.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/dma.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/dsoundoss.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/externals.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/freeze.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/gauss_i.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/oss.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/psemuxa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/record.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/registers.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/regs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/resource.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/reverb.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/spu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/stdafx.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xa.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_adsr.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_cfg.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_debug.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_dma.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_freeze.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_output.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_psemu.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_record.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_registers.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_reverb.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_spu.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_spuPeopsSound.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_stdafx.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/xr_xa.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_audio_repair110/zn.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_cdrom/cdr-null.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_cdrom/cdr.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/cfg.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/draw.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/externals.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/fps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/gpu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/hq2x.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/hq3x.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/interp.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/key.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/menu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/prim.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/soft.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/swap.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_cfg.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_draw.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_fps.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_gpu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_gpu_endian.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_prim.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_soft.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_texture.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_gfx/v_texture.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_input/pad.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/plugins/xenon_input/pad.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/ppcr/pR3000A.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/ppcr/pR3000A.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/ppcr/pasm.S"
-            ex="true"
-            tool="4"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/ppcr/ppc.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/ppcr/ppc.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/ppcr/ppc_mnemonics.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/ppcr/reguse.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/ppcr/reguse.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/FreeTypeGX.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/FreeTypeGX.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/Vec.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/VecMatrix.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/VecVector.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/_pnginfo.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/_wchar.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/audio.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/audio.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/button_mapping.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/button_mapping.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/cheatmgr.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/filebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/filebrowser.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/filelist.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/fileop.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/fileop.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/filter.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/freeze.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/freeze.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gcunzip.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gcunzip.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_button.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_element.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_filebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_image.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_imagedata.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_keyboard.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_optionbrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_savebrowser.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_sound.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_text.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_trigger.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/gui/gui_window.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/input.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/input.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/memory.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/menu.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/menu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/oggplayer.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/oggplayer.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/pngu.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/pngu.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/preferences.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/preferences.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/s9xsupport.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/screencapture.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/2xBR-v3.5a.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/2xBR-v3.5a.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/5xBR-v3.7a.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/5xBR-v3.7a.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/5xBR-v3.7b.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/5xBR-v3.7b.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/5xBR-v3.7c.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/5xBR-v3.7c.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/crt.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/crt.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/hq4x.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/hq4x.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/ps.c.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/ps.t.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/ps.tc.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/s2xsal.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/s2xsal.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/scanline.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/scanline.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/simple.ps.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/simple.vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/shaders/vs.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/snes9gx_video.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/snes9xgx.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/snes9xgx.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/sram.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/sram.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/utils/gettext.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/utils/gettext.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/video.cpp"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/video.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/w_input.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/wchar.c"
-            ex="true"
             tool="0"
             flavor2="0">
       </item>
-      <item path="/home/ced/xenon/pcsxr/source/xenon/xenon.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
+      <item path="source/plugins/xenon_gfx/v_prim.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
       </item>
-      <folder path="source/gui">
+      <item path="source/plugins/xenon_gfx/v_soft.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/gui</pElem>
+            <pElem>/usr/local/xenon/usr/include</pElem>
           </incDir>
         </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/gui</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
-      <folder path="source/gui/libwiigui">
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/gui/libwiigui</pElem>
-            <pElem>/usr/local/xenon/usr/include/freetype2/freetype/config</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
-      <folder path="source/httpd">
+      </item>
+      <item path="source/plugins/xenon_gfx/v_texture.c"
+            ex="true"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_gfx/v_texture.h"
+            ex="true"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="source/plugins/xenon_input/pad.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/ppcr/pR3000A.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/httpd</pElem>
+            <pElem>source/libpcsxcore</pElem>
           </incDir>
         </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>/usr/local/xenon/xenon/include/c++/4.6.1/xenon/32/bits</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/httpd</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
-      <folder path="source/libpcsxcore">
+      </item>
+      <item path="source/ppcr/pasm.S" ex="true" tool="4" flavor2="0">
+      </item>
+      <item path="source/ppcr/ppc.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="source/ppcr/reguse.c" ex="false" tool="0" flavor2="2">
         <cTool>
           <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
+            <pElem>source/libpcsxcore</pElem>
           </incDir>
         </cTool>
-      </folder>
-      <folder path="source/main">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/main</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
-            <pElem>/usr/local/xenon/usr/include/libntfs</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/main</pElem>
-            <pElem>/usr/local/xenon/usr/include/diskio</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
-      <folder path="source/plugins/Pokopom">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/Pokopom</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
-      <folder path="source/plugins/SPU">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/SPU</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
-      <folder path="source/plugins/cdrcimg">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/cdrcimg</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="source/plugins/dfinput">
-        <cTool>
-          <incDir>
-            <pElem>/usr/local/xenon/usr/include/input</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/dfinput</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="source/plugins/peopsxgl">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/peopsxgl</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
-      <folder path="source/plugins/xenon_audio_repair">
-        <ccTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
-      <folder path="source/plugins/xenon_gfx">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_gfx</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="source/plugins/xenon_input">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/libpcsxcore</pElem>
-            <pElem>/usr/local/xenon/usr/include/input</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/plugins/xenon_input</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="source/ppcr">
-        <cTool>
-          <incDir>
-            <pElem>../../../cc/xenon/pcsxr-xenon/build</pElem>
-            <pElem>../../../cc/xenon/pcsxr-xenon/source/ppcr</pElem>
-          </incDir>
-        </cTool>
-      </folder>
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

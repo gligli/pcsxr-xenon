@@ -22,7 +22,7 @@ GUI_INC         :=  source/gui
 
 GUI_INCLUDE	:=  -I$(LIBXENON_INC)/freetype2
 GUI_LIBS	:=  -lfreetype
-# GUI_FLAGS	:=  -DUSE_GUI
+#GUI_FLAGS	:=  -DUSE_GUI
 
 #---------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------
@@ -143,7 +143,7 @@ export OUTPUT	:=	$(CURDIR)/$(TARGET)
 #---------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
-	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile -j4
+	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 #---------------------------------------------------------------------------------
 clean:
