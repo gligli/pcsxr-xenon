@@ -36,6 +36,8 @@ typedef unsigned int DWORD;
 #include "fxaa.vs.h"
 #include "fxaa.ps.h"
 
+#define MAKE_COLOR4(r,g,b,a) ((a)<<24 | ((b)<<16) | ((g)<<8) | (r))
+
 #define MAX_VERTEX_COUNT 65536
 #define MAX_INDICE_COUNT 65536
 
@@ -313,15 +315,15 @@ void GpuRenderer::UpdatesStates() {
 	Xe_SetAlphaRef(xe, m_RenderStates.alpha_test_ref);
 	Xe_SetAlphaTestEnable(xe, m_RenderStates.alpha_test_enable);
 
-	Xe_SetZEnable(xe, m_RenderStates.z_write);
-	Xe_SetZWrite(xe, m_RenderStates.z_enable);
+	Xe_SetZEnable(xe, m_RenderStates.z_enable);
+	Xe_SetZWrite(xe, m_RenderStates.z_write);
 	Xe_SetZFunc(xe, m_RenderStates.z_func);
 
 	//nw
-	Xe_SetStencilEnable(xe, 1);
+/*	Xe_SetStencilEnable(xe, 1);
 	Xe_SetStencilFunc(xe, 3, XE_CMP_ALWAYS);
 	Xe_SetStencilWriteMask(xe, 3, 2);
-	Xe_SetStencilOp(xe, 3, -1, XE_STENCILOP_INCR, XE_STENCILOP_ZERO);
+	Xe_SetStencilOp(xe, 3, -1, XE_STENCILOP_INCR, XE_STENCILOP_ZERO);*/
 
 	if (m_RenderStates.currentPsShader)
 		Xe_SetShader(xe, SHADER_TYPE_PIXEL, m_RenderStates.currentPsShader, 0);
@@ -491,19 +493,7 @@ void GpuRenderer::Clear(uint32_t flags) {
 }
 
 void GpuRenderer::ClearColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
-	FinishPendingClear();
-
-	union {
-		uint8_t c[4];
-		uint32_t u;
-	} ucolor;
-
-	ucolor.c[0] = a;
-	ucolor.c[1] = b;
-	ucolor.c[2] = g;
-	ucolor.c[3] = r;
-
-	Xe_SetClearColor(xe,ucolor.u);
+	Xe_SetClearColor(xe,MAKE_COLOR4(r,g,b,a));
 }
 
 // fillmode
@@ -882,8 +872,8 @@ void GpuRenderer::primVertex(float * v) {
 	NextVertice();
 };
 
-void GpuRenderer::primColor(u8 *v) {
-	m_primColor = *(uint32_t*) v;
+void GpuRenderer::primColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+	m_primColor = MAKE_COLOR4(r,g,b,a);
 };
 
 static int n_texture = 0;

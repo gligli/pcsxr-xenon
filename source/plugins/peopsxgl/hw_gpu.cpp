@@ -355,7 +355,6 @@ EXTERN long CALLBACK GPUshutdown() {
 ////////////////////////////////////////////////////////////////////////
 
 void PaintBlackBorders(void) {
-
 	short s;
 
 	gpuRenderer.DisableScissor();
@@ -366,7 +365,7 @@ void PaintBlackBorders(void) {
 	OGLVertex vertex[4];
 	vertex[0].c.lcol = 0;
 	vertex[0].c.a = 0xFF;
-	gpuRenderer.primColor(vertex[0].c.col);
+	gpuRenderer.primColor(vertex[0].c.r,vertex[0].c.g,vertex[0].c.b,vertex[0].c.a);
 
 #define Vertex3f(i,_x,_y,_z)	\
 	vertex[i].x=_x;vertex[i].y=_y;vertex[i].z=_z; \
@@ -455,15 +454,8 @@ void _updateDisplay(void) // UPDATE DISPLAY
 
 	if (PSXDisplay.Disabled) // display disabled?
 	{
-		// moved here
-		/*
-				glDisable(GL_SCISSOR_TEST);
-				glClearColor(0, 0, 0, 128); // -> clear whole backbuffer
-				glClear(uiBufferBits);
-				glEnable(GL_SCISSOR_TEST);
-		 */
 		gpuRenderer.DisableScissor();
-		gpuRenderer.ClearColor(0, 0, 0, 128);
+		gpuRenderer.ClearColor(0, 0, 0, 255);
 		gpuRenderer.Clear(uiBufferBits);
 		gpuRenderer.EnableScissor();
 
@@ -517,34 +509,11 @@ void _updateDisplay(void) // UPDATE DISPLAY
 
 	if (lClearOnSwap) // clear buffer after swap?
 	{
-
-
 		if (bDisplayNotSet) // -> set new vals
 			SetOGLDisplaySettings(1);
 
-
-
-		/*
-		 * GLclampf g, b, r;
-		g = ((GLclampf) GREEN(lClearOnSwapColor)) / 255.0f; // -> get col
-		b = ((GLclampf) BLUE(lClearOnSwapColor)) / 255.0f;
-		r = ((GLclampf) RED(lClearOnSwapColor)) / 255.0f;
-
-		glDisable(GL_SCISSOR_TEST);
-		glClearColor(r,g,b,128);                            // -> clear
-		glClear(uiBufferBits);
-		glEnable(GL_SCISSOR_TEST);
-		 */
-
-		XeColor xeclearcolor;
-		xeclearcolor.color = 0;
-		xeclearcolor.a = 128;
-		xeclearcolor.r = RED(lClearOnSwapColor);
-		xeclearcolor.g = BLUE(lClearOnSwapColor);
-		xeclearcolor.b = GREEN(lClearOnSwapColor);
-
 		gpuRenderer.DisableScissor();
-		gpuRenderer.ClearColor(xeclearcolor.r, xeclearcolor.g, xeclearcolor.b, xeclearcolor.a);
+		gpuRenderer.ClearColor(RED(lClearOnSwapColor), GREEN(lClearOnSwapColor), BLUE(lClearOnSwapColor), 255);
 		gpuRenderer.Clear(uiBufferBits);
 		gpuRenderer.EnableScissor();
 
@@ -552,10 +521,6 @@ void _updateDisplay(void) // UPDATE DISPLAY
 	} else {
 		if (peops_cfg.iZBufferDepth) // clear zbuffer as well (if activated)
 		{
-			//
-			// glDisable(GL_SCISSOR_TEST);
-			// glClear(GL_DEPTH_BUFFER_BIT);
-			// glEnable(GL_SCISSOR_TEST);
 			gpuRenderer.DisableScissor();
 			gpuRenderer.Clear(XE_CLEAR_DS);
 			gpuRenderer.EnableScissor();
@@ -732,12 +697,7 @@ void SetAspectRatio(void) {
 	if (r.bottom < rRatioRect.bottom ||
 			r.right < rRatioRect.right) {
 		RECT rC;
-		//glClearColor(0, 0, 0, 128);
-		XeColor xeclearcolor;
-		xeclearcolor.color = 0;
-		xeclearcolor.a = 128;
-		//Xe_SetClearColor(xe,xeclearcolor.color);
-		gpuRenderer.ClearColor(xeclearcolor.r, xeclearcolor.g, xeclearcolor.b, xeclearcolor.a);
+		gpuRenderer.ClearColor(0, 0, 0, 255);
 
 		if (r.right < rRatioRect.right) {
 			rC.left = 0;

@@ -138,13 +138,9 @@ namespace xegpu {
 ////////////////////////////////////////////////////////////////////////
 
 void GetExtInfos(void) {
-    BOOL bPacked = FALSE; // default: no packed pixel support
-
     bGLExt = FALSE; // default: no extensions
     bGLFastMovie = FALSE;
     iUsePalTextures = 0;
-    bPacked = FALSE;
-
     iClampType = XE_TEXADDR_CLAMP;
 }
 
@@ -318,9 +314,6 @@ int GLinitialize() {
     if (peops_cfg.iZBufferDepth) // zbuffer?
     {
         uiBufferBits = XE_CLEAR_COLOR | XE_CLEAR_DS;
-        //    glEnable(GL_DEPTH_TEST);
-        //    glDepthFunc(GL_ALWAYS);
-
         gpuRenderer.EnableDepthTest();
         gpuRenderer.DepthFunc(XE_CMP_ALWAYS);
         //gpuRenderer.DepthFunc(XE_CMP_NEVER);
@@ -332,9 +325,7 @@ int GLinitialize() {
         gpuRenderer.DisableDepthTest();
     }
 
-    //glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // first buffer clear
-    //glClear(uiBufferBits);
-    gpuRenderer.ClearColor(0, 0, 0, 0); // first buffer clear
+    gpuRenderer.ClearColor(0, 0, 0, 255); // first buffer clear
     gpuRenderer.Clear(uiBufferBits);
 
     GetExtInfos(); // get ext infos

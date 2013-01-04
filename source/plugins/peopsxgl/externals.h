@@ -33,13 +33,8 @@ extern struct XenosDevice *xe;
 
 #define CLUTUSED     0x80000000
 
-#define SETCOL(x)  {ulOLDCOL=x.c.lcol;gpuRenderer.primColor(x.c.col);} 
-#define SETPCOL(x) {ulOLDCOL=x->c.lcol;gpuRenderer.primColor(x->c.col);}
-
-//#define SETCOL(x)  if(x.c.lcol!=ulOLDCOL) {ulOLDCOL=x.c.lcol;vertex[0].c.lcol = ulOLDCOL;vertex[1].c.lcol = ulOLDCOL;vertex[2].c.lcol = ulOLDCOL;vertex[3].c.lcol = ulOLDCOL;} 
-//#define SETPCOL(x)  if(x->c.lcol!=ulOLDCOL) {ulOLDCOL=x->c.lcol;vertex[0].c.lcol = ulOLDCOL;vertex[1].c.lcol = ulOLDCOL;vertex[2].c.lcol = ulOLDCOL;vertex[3].c.lcol = ulOLDCOL;}
-//#define SETCOL(x)  if(x.c.lcol!=ulOLDCOL) {ulOLDCOL=x.c.lcol;vertex[0].c.lcol = ulOLDCOL;vertex[1].c.lcol = ulOLDCOL;vertex[2].c.lcol = ulOLDCOL;vertex[3].c.lcol = ulOLDCOL;} 
-//#define SETPCOL(x)  if(x->c.lcol!=ulOLDCOL) {ulOLDCOL=x->c.lcol;}
+#define SETCOL(x)  {ulOLDCOL=x.c.lcol;gpuRenderer.primColor(x.c.r,x.c.g,x.c.b,x.c.a);} 
+#define SETPCOL(x) {ulOLDCOL=x->c.lcol;gpuRenderer.primColor(x->c.r,x->c.g,x->c.b,x->c.a);}
 
 #define GL_TO_EDGE_CLAMP              0x812F
 
@@ -191,23 +186,14 @@ typedef struct OGLVertexTag
  float tow;
 
  union COLTAG
-  {
-     struct {
-#if 0
-         unsigned char r;
-         unsigned char g;
-         unsigned char b;
-         unsigned char a;
-#else
-         unsigned char a;
-         unsigned char r;
-         unsigned char g;
-         unsigned char b;
-         
-#endif
-     };
-   unsigned char col[4];
-   unsigned int lcol;
+ {
+	struct {
+		unsigned char a;
+		unsigned char b;
+		unsigned char g;
+		unsigned char r;
+	};
+	unsigned int lcol;
   } c;
 } OGLVertex;
 

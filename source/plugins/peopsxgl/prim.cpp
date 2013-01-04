@@ -1727,7 +1727,6 @@ static void primBlkFill(unsigned char * baseAddr) {
             b = BLUE(GETLE32(&gpuData[0]));
             r = RED(GETLE32(&gpuData[0]));
 
-            //glDisable(GL_SCISSOR_TEST);
             gpuRenderer.DisableScissor();
             gpuRenderer.ClearColor(r, g, b, 255);
             gpuRenderer.Clear(uiBufferBits);
@@ -1789,8 +1788,8 @@ static void primBlkFill(unsigned char * baseAddr) {
     //if (IsInsideNextScreen(sprtX, sprtY, sprtW, sprtH))
     // try this:
     if (IsCompleteInsideNextScreen(sprtX, sprtY, sprtW, sprtH)) {
-        lClearOnSwapColor = COLOR(GETLE32(&gpuData[0]));
-        lClearOnSwap = 1;
+		lClearOnSwapColor = COLOR(GETLE32(&gpuData[0]));
+		lClearOnSwap = 1;
     }
 
     if (peops_cfg.iOffscreenDrawing) {
@@ -2048,8 +2047,8 @@ static void primTileS(unsigned char * baseAddr) {
         if (IsPrimCompleteInsideNextScreen(lx0, ly0, lx2, ly2) ||
                 (ly0 == -6 && ly2 == 10)) // OH MY GOD... I DIDN'T WANT TO DO IT... BUT I'VE FOUND NO OTHER WAY... HACK FOR GRADIUS SHOOTER :(
         {
-            lClearOnSwapColor = COLOR(GETLE32(&gpuData[0]));
-            lClearOnSwap = 1;
+			lClearOnSwapColor = COLOR(GETLE32(&gpuData[0]));
+			lClearOnSwap = 1;
         }
 
         offsetPSX4();
