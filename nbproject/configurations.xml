@@ -2,6 +2,33 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df name="pcsxr-xenon" root=".">
+      <df name="build">
+        <in>button_click_pcm.h</in>
+        <in>button_over_pcm.h</in>
+        <in>debug_xenon_bg_png.h</in>
+        <in>dialogue_box_png.h</in>
+        <in>en_lang.h</in>
+        <in>folder_png.h</in>
+        <in>font_ttf.h</in>
+        <in>keyboard_textbox_png.h</in>
+        <in>xenon_bg_file_selection_entry_png.h</in>
+        <in>xenon_bg_png.h</in>
+        <in>xenon_button_gamesave_blank_png.h</in>
+        <in>xenon_button_gamesave_over_png.h</in>
+        <in>xenon_button_gamesave_png.h</in>
+        <in>xenon_button_large_over_png.h</in>
+        <in>xenon_button_large_png.h</in>
+        <in>xenon_button_over_png.h</in>
+        <in>xenon_button_png.h</in>
+        <in>xenon_filebrowser_png.h</in>
+        <in>xenon_popup_png.h</in>
+        <in>xenon_scrollbar_arrowdown_png.h</in>
+        <in>xenon_scrollbar_arrowup_png.h</in>
+        <in>xenon_scrollbar_box_png.h</in>
+        <in>xenon_scrollbar_png.h</in>
+      </df>
+      <df name="build">
+      </df>
       <df name="include">
         <df name="sys">
           <in>mman.h</in>
@@ -202,6 +229,7 @@
             <in>pad.h</in>
           </df>
           <df name="peopsxgl">
+            <in>3DMath.h</in>
             <in>GpuRenderer.cpp</in>
             <in>GpuRenderer.h</in>
             <in>cfg.cpp</in>
@@ -464,11 +492,13 @@
           <executablePath></executablePath>
           <cTool>
             <preprocessorList>
+              <Elem>LIBXENON</Elem>
               <Elem>XENON</Elem>
             </preprocessorList>
           </cTool>
           <ccTool>
             <preprocessorList>
+              <Elem>LIBXENON</Elem>
               <Elem>XENON</Elem>
             </preprocessorList>
           </ccTool>

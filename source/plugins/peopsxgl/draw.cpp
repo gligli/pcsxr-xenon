@@ -284,7 +284,6 @@ void SetExtGLFuncs(void) {
     TCF[0] = P8BGRA;
     //TCF[1] = XP8BGRA_1;
 
-    bBlendEnable = FALSE; // init blending: off
     gpuRenderer.DisableBlend();
 }
 
@@ -349,7 +348,6 @@ int GLinitialize() {
     TWin.UScaleFactor = 1;
     TWin.VScaleFactor = 1;
     bDrawMultiPass = FALSE;
-    bTexEnabled = FALSE;
     bUsingTWin = FALSE;
 
     /*

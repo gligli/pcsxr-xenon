@@ -74,6 +74,8 @@ private:
 	GpuPS * g_pPixelShaderF;
 	GpuPS * g_pPixelShaderG;
 
+	bool rendering;
+	
 	/**
 	 * Post process
 	 */
@@ -110,12 +112,6 @@ private:
 		int32_t blend_dst;
 		int32_t blending_enabled;
 
-		// alpha blend
-		int32_t alpha_blend_op;
-		int32_t alpha_blend_src;
-		int32_t alpha_blend_dst;
-		int32_t alpha_blending_enabled;
-
 		// cull mode
 		uint32_t cullmode;
 
@@ -142,20 +138,10 @@ private:
 
 	RenderStates m_RenderStates;
 
-public:
-	int b_StatesChanged;
-
-
-	/**
-	 * states changed
-	 */
-	void StatesChanged();
-	
-	void SubmitVertices();
 private:
 	void UpdatesStates();
+	void SubmitVertices();
 
-	
 
 	void InitStates();
 	void InitXe();
@@ -199,14 +185,6 @@ public:
 	void SetBlendFunc(int src, int dst);
 	void SetBlendOp(int op);
 
-	/**
-	 * Alpha blend
-	 */
-	void DisableAlphaBlend();
-	void EnableAlphaBlend();
-	void SetAlphaBlendFunc(int src, int dst);
-	void SetAlphaBlendOp(int op);
-
 	// cull mode
 
 	/**
@@ -239,6 +217,7 @@ public:
 	/**
 	 * Render
 	 */
+	void FinishPendingRender();
 	void Render();
 
 	/**

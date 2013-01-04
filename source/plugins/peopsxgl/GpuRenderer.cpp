@@ -50,8 +50,6 @@ static XenosDevice _xe;
 static int16_t indices_strip[] = {0, 1, 2, 2, 1, 3};
 static int16_t indices_quad[] = {0, 1, 2, 0, 2, 3};
 
-static int vbBaseVertexIndex = 0;
-
 struct fxaa_vb {
 	float x, y, z, w; // pos
 	float u, v; //tex coord
@@ -293,91 +291,60 @@ void GpuRenderer::InitPostProcess() {
 	BeginPostProcess();
 }
 
-void GpuRenderer::StatesChanged() {
-	b_StatesChanged = 1;
-}
-
 void GpuRenderer::UpdatesStates() {
-	if (b_StatesChanged)
-	{
-		if (m_RenderStates.surface) {
-			m_RenderStates.surface->use_filtering = XE_TEXF_POINT;
-			if (postprocessenabled)
-				m_RenderStates.surface->use_filtering = XE_TEXF_LINEAR;
-		}
-		Xe_SetTexture(xe, 0, m_RenderStates.surface);
-
-		if (m_RenderStates.blending_enabled) {
-			Xe_SetSrcBlend(xe, m_RenderStates.blend_src);
-			Xe_SetDestBlend(xe, m_RenderStates.blend_dst);
-			Xe_SetBlendOp(xe, m_RenderStates.blend_op);
-		} else {
-			Xe_SetSrcBlend(xe, XE_BLEND_ONE);
-			Xe_SetDestBlend(xe, XE_BLEND_ZERO);
-			Xe_SetBlendOp(xe, XE_BLENDOP_ADD);
-		}
-
-		Xe_SetSrcBlendAlpha(xe, m_RenderStates.alpha_blend_dst);
-		Xe_SetDestBlendAlpha(xe, m_RenderStates.alpha_blend_dst);
-		Xe_SetBlendOpAlpha(xe, m_RenderStates.alpha_blend_op);
-
-		Xe_SetAlphaFunc(xe, m_RenderStates.alpha_test_func);
-		Xe_SetAlphaRef(xe, m_RenderStates.alpha_test_ref);
-		Xe_SetAlphaTestEnable(xe, m_RenderStates.alpha_test_enable);
-
-		Xe_SetZEnable(xe, m_RenderStates.z_write);
-		Xe_SetZWrite(xe, m_RenderStates.z_enable);
-		Xe_SetZFunc(xe, m_RenderStates.z_func);
-
-		//nw
-		Xe_SetStencilEnable(xe, 1);
-		Xe_SetStencilFunc(xe, 3, XE_CMP_ALWAYS);
-		Xe_SetStencilWriteMask(xe, 3, 2);
-		Xe_SetStencilOp(xe, 3, -1, XE_STENCILOP_INCR, XE_STENCILOP_ZERO);
-
-		Xe_SetClearColor(xe, m_RenderStates.clearcolor);
-
-		if (m_RenderStates.currentPsShader)
-			Xe_SetShader(xe, SHADER_TYPE_PIXEL, m_RenderStates.currentPsShader, 0);
-		else
-			Xe_SetShader(xe, SHADER_TYPE_PIXEL, g_pPixelShaderC, 0);
-
-		Xe_SetScissor(xe, m_RenderStates.scissor_enable,
-				m_RenderStates.scissor_left, m_RenderStates.scissor_top, m_RenderStates.scissor_right, m_RenderStates.scissor_bottom);
+	if (m_RenderStates.surface) {
+		m_RenderStates.surface->use_filtering = XE_TEXF_POINT;
+		if (postprocessenabled)
+			m_RenderStates.surface->use_filtering = XE_TEXF_LINEAR;
 	}
+	Xe_SetTexture(xe, 0, m_RenderStates.surface);
+
+	if (m_RenderStates.blending_enabled) {
+		Xe_SetBlendControl(xe,
+			m_RenderStates.blend_src, m_RenderStates.blend_op, m_RenderStates.blend_dst,
+			m_RenderStates.blend_src, m_RenderStates.blend_op, m_RenderStates.blend_dst);
+	} else {
+		Xe_SetBlendControl(xe,
+			XE_BLEND_ONE, XE_BLENDOP_ADD, XE_BLEND_ZERO,
+			XE_BLEND_ONE, XE_BLENDOP_ADD, XE_BLEND_ZERO);
+	}
+
+	Xe_SetAlphaFunc(xe, m_RenderStates.alpha_test_func);
+	Xe_SetAlphaRef(xe, m_RenderStates.alpha_test_ref);
+	Xe_SetAlphaTestEnable(xe, m_RenderStates.alpha_test_enable);
+
+	Xe_SetZEnable(xe, m_RenderStates.z_write);
+	Xe_SetZWrite(xe, m_RenderStates.z_enable);
+	Xe_SetZFunc(xe, m_RenderStates.z_func);
+
+	//nw
+	Xe_SetStencilEnable(xe, 1);
+	Xe_SetStencilFunc(xe, 3, XE_CMP_ALWAYS);
+	Xe_SetStencilWriteMask(xe, 3, 2);
+	Xe_SetStencilOp(xe, 3, -1, XE_STENCILOP_INCR, XE_STENCILOP_ZERO);
+
+	Xe_SetClearColor(xe, m_RenderStates.clearcolor);
+
+	if (m_RenderStates.currentPsShader)
+		Xe_SetShader(xe, SHADER_TYPE_PIXEL, m_RenderStates.currentPsShader, 0);
+	else
+		Xe_SetShader(xe, SHADER_TYPE_PIXEL, g_pPixelShaderC, 0);
+
+	Xe_SetScissor(xe, m_RenderStates.scissor_enable,
+			m_RenderStates.scissor_left, m_RenderStates.scissor_top, m_RenderStates.scissor_right, m_RenderStates.scissor_bottom);
 }
 
 void GpuRenderer::SubmitVertices() {
-	// do we have some unsubmited vertices ?
-	//if (b_StatesChanged) 
-	{
-		//if (prevIndicesCount != indicesCount())
-		{
-			// update render states
-			UpdatesStates();
+	// update render states
+	UpdatesStates();
 
-
-			// Draw
-			if (m_PrimType != PRIM_RECTLIST) {
-				Xe_DrawIndexedPrimitive(xe, XE_PRIMTYPE_TRIANGLELIST, 0, 0, verticesCount(), prevIndicesCount, (indicesCount() - prevIndicesCount) / 3);
-			} else {
-				Xe_DrawPrimitive(xe, XE_PRIMTYPE_RECTLIST, vbBaseVertexIndex, 1);
-			}
-
-			prevIndicesCount = indicesCount();
-
-			vbBaseVertexIndex = verticesCount();
-
-			b_StatesChanged = 0;
-		}
-	}
+	// draw
+	Xe_DrawIndexedPrimitive(xe, (m_PrimType == PRIM_RECTLIST) ?XE_PRIMTYPE_RECTLIST:XE_PRIMTYPE_TRIANGLELIST, 0, 0, verticesCount(), prevIndicesCount, (indicesCount() - prevIndicesCount) / 3);
+	prevIndicesCount = indicesCount();
 }
 
 void GpuRenderer::InitStates() {
-	m_RenderStates.alpha_blend_src = XE_BLEND_ONE;
-	m_RenderStates.alpha_blend_dst = XE_BLEND_ZERO;
-	m_RenderStates.alpha_blend_op = XE_BLENDOP_ADD;
-
+	m_RenderStates.blending_enabled = 0;
 	m_RenderStates.blend_src = XE_BLEND_ONE;
 	m_RenderStates.blend_dst = XE_BLEND_ZERO;
 	m_RenderStates.blend_op = XE_BLENDOP_ADD;
@@ -387,7 +354,7 @@ void GpuRenderer::InitStates() {
 	m_RenderStates.alpha_test_ref = 0;
 
 	m_RenderStates.clearcolor = 0;
-	m_RenderStates.clear_pending = 1;
+	m_RenderStates.clear_pending = 0;
 	m_RenderStates.cullmode = XE_CULL_NONE;
 
 	m_RenderStates.fillmode_back = 0;
@@ -407,7 +374,6 @@ void GpuRenderer::InitStates() {
 	m_RenderStates.z_write = 0;
 
 	m_RenderStates.scissor_enable = 0;
-	b_StatesChanged = 1;
 }
 
 extern struct XenosDevice * g_pVideoDevice;
@@ -482,8 +448,12 @@ void GpuRenderer::Lock() {
 }
 
 void GpuRenderer::Unlock() {
-	Xe_VB_Unlock(xe, pVb);
-	Xe_IB_Unlock(xe, pIb);
+	
+	if (pVb->lock.start)
+		Xe_VB_Unlock(xe, pVb);
+	
+	if (pIb->lock.start)
+		Xe_IB_Unlock(xe, pIb);
 }
 
 /**
@@ -492,22 +462,22 @@ void GpuRenderer::Unlock() {
  */
 void GpuRenderer::SetTexture(struct XenosSurface * s) {
 	if (s != m_RenderStates.surface) {
+		SubmitVertices();
 		m_RenderStates.surface = s;
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::EnableTexture() {
-	if (m_RenderStates.currentPsShader == g_pPixelShaderC) {
+	if (m_RenderStates.currentPsShader != g_pPixelShaderG) {
+		SubmitVertices();
 		m_RenderStates.currentPsShader = g_pPixelShaderG;
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::DisableTexture() {
-	if (m_RenderStates.currentPsShader == g_pPixelShaderG) {
+	if (m_RenderStates.currentPsShader != g_pPixelShaderC) {
+		SubmitVertices();
 		m_RenderStates.currentPsShader = g_pPixelShaderC;
-		StatesChanged();
 	}
 }
 
@@ -515,11 +485,11 @@ void GpuRenderer::DisableTexture() {
  * Clear
  */
 void GpuRenderer::Clear(uint32_t flags) {
-	//Xe_Clear(xe, flags);
-	// Xe_Resolve(xe);
-	if (flags & XE_CLEAR_COLOR)
+	if ((!m_RenderStates.clear_pending) && (flags & XE_CLEAR_COLOR))
+	{
+		SubmitVertices();
 		m_RenderStates.clear_pending = 1;
-	StatesChanged();
+	}
 }
 
 void GpuRenderer::ClearColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
@@ -532,15 +502,14 @@ void GpuRenderer::ClearColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
 	} ucolor;
 
 	ucolor.c[0] = a;
-	ucolor.c[1] = r;
+	ucolor.c[1] = b;
 	ucolor.c[2] = g;
-	ucolor.c[3] = b;
+	ucolor.c[3] = r;
 
 	//Xe_SetClearColor(xe, ucolor.u);
 	if (m_RenderStates.clearcolor != ucolor.u) {
+		SubmitVertices();
 		m_RenderStates.clearcolor = ucolor.u;
-		
-		StatesChanged();
 	}
 }
 
@@ -550,73 +519,31 @@ void GpuRenderer::ClearColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
  * blend
  */
 void GpuRenderer::DisableBlend() {
-	// set disabled states
-	// SetBlendFunc(XE_BLEND_ONE, XE_BLEND_ZERO);
-	// SetBlendOp(XE_BLENDOP_ADD);
-	if (m_RenderStates.blending_enabled == 1) {
+	if (m_RenderStates.blending_enabled) {
+		SubmitVertices();
 		m_RenderStates.blending_enabled = 0;
-		
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::EnableBlend() {
-	// restore saved states ...
-	// SetBlendFunc(m_RenderStates.blend_src, m_RenderStates.blend_dst);
-	// SetBlendOp(m_RenderStates.blend_op);
-	if (m_RenderStates.blending_enabled == 0) {
+	if (!m_RenderStates.blending_enabled) {
+		SubmitVertices();
 		m_RenderStates.blending_enabled = 1;
-		
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::SetBlendFunc(int src, int dst) {
 	if ((m_RenderStates.blend_src != src) || (m_RenderStates.blend_dst != dst)) {
+		SubmitVertices();
 		m_RenderStates.blend_src = src;
 		m_RenderStates.blend_dst = dst;
-		
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::SetBlendOp(int op) {
 	if (m_RenderStates.blend_op != op) {
+		SubmitVertices();
 		m_RenderStates.blend_op = op;
-		
-		StatesChanged();
-	}
-}
-
-/**
- * Alpha blend
- */
-void GpuRenderer::DisableAlphaBlend() {
-	// set disabled states
-	SetAlphaBlendFunc(XE_BLEND_ONE, XE_BLEND_ZERO);
-	SetAlphaBlendOp(XE_BLENDOP_ADD);
-}
-
-void GpuRenderer::EnableAlphaBlend() {
-	// restore saved states ...
-	SetBlendFunc(m_RenderStates.alpha_blend_src, m_RenderStates.alpha_blend_dst);
-	SetBlendOp(m_RenderStates.blend_op);
-}
-
-void GpuRenderer::SetAlphaBlendFunc(int src, int dst) {
-	if ((m_RenderStates.alpha_blend_src != src) || (m_RenderStates.alpha_blend_dst != dst)) {
-		m_RenderStates.alpha_blend_dst = src;
-		m_RenderStates.alpha_blend_dst = dst;
-		
-		StatesChanged();
-	}
-}
-
-void GpuRenderer::SetAlphaBlendOp(int op) {
-	if (m_RenderStates.blend_op != op) {
-		m_RenderStates.alpha_blend_op = op;
-		
-		StatesChanged();
 	}
 }
 
@@ -627,27 +554,23 @@ void GpuRenderer::SetAlphaBlendOp(int op) {
  */
 void GpuRenderer::SetAlphaFunc(int func, float ref) {
 	if ((m_RenderStates.alpha_test_func != func) || (m_RenderStates.alpha_test_ref != ref)) {
+		SubmitVertices();
 		m_RenderStates.alpha_test_func = func;
 		m_RenderStates.alpha_test_ref = ref;
-
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::EnableAlphaTest() {
-	if (m_RenderStates.alpha_test_enable == 0) {
-		// restore saved states
+	if (!m_RenderStates.alpha_test_enable) {
+		SubmitVertices();
 		m_RenderStates.alpha_test_enable = 1;
-
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::DisableAlphaTest() {
-	if (m_RenderStates.alpha_test_enable == 1) {
+	if (m_RenderStates.alpha_test_enable) {
+		SubmitVertices();
 		m_RenderStates.alpha_test_enable = 0;
-
-		StatesChanged();
 	}
 }
 
@@ -667,25 +590,25 @@ void GpuRenderer::SetScissor(uint32_t x, uint32_t y, uint32_t width, uint32_t he
 			m_RenderStates.scissor_bottom != bottom
 
 			) {
+		SubmitVertices();
 		m_RenderStates.scissor_left = left;
 		m_RenderStates.scissor_top = top;
 		m_RenderStates.scissor_right = right;
 		m_RenderStates.scissor_bottom = bottom;
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::DisableScissor() {
-	if (m_RenderStates.scissor_enable == 1) {
+	if (m_RenderStates.scissor_enable) {
+		SubmitVertices();
 		m_RenderStates.scissor_enable = 0;
-		StatesChanged();
 	}
 };
 
 void GpuRenderer::EnableScissor() {
-	if (m_RenderStates.scissor_enable == 0) {
+	if (!m_RenderStates.scissor_enable) {
+		SubmitVertices();
 		m_RenderStates.scissor_enable = 1;
-		StatesChanged();
 	}
 };
 
@@ -693,25 +616,25 @@ void GpuRenderer::EnableScissor() {
  * z / depth
  */
 void GpuRenderer::EnableDepthTest() {
-	if ((m_RenderStates.z_write != 1) || (m_RenderStates.z_write != 1)) {
+	if (!m_RenderStates.z_write || !m_RenderStates.z_enable) {
+		SubmitVertices();
 		m_RenderStates.z_write = 1;
 		m_RenderStates.z_enable = 1;
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::DisableDepthTest() {
-	if ((m_RenderStates.z_write != 0) || (m_RenderStates.z_write != 0)) {
+	if (m_RenderStates.z_write || m_RenderStates.z_enable) {
+		SubmitVertices();
 		m_RenderStates.z_write = 0;
 		m_RenderStates.z_enable = 0;
-		StatesChanged();
 	}
 }
 
 void GpuRenderer::DepthFunc(int func) {
 	if (m_RenderStates.z_func != func) {
+		SubmitVertices();
 		m_RenderStates.z_func = func;
-		StatesChanged();
 	}
 }
 
@@ -816,11 +739,11 @@ uint32_t GpuRenderer::GetFramebufferHeight() {
 }
 
 /**
- * Render
+ * DoRender
  */
 void GpuRenderer::Render() {
 	// Submit last batch of vertices
-	// SubmitVertices();
+    SubmitVertices();
 
 	Unlock();
 
@@ -833,8 +756,25 @@ void GpuRenderer::Render() {
 		Xe_ResolveInto(xe, Xe_GetFramebufferSurface(xe), XE_SOURCE_COLOR, XE_CLEAR_DS);
 	
 	m_RenderStates.clear_pending = 0;
+	
+	rendering = true;
 
+#if 1
+	Xe_Execute(xe); // start background render !
+#else	
+	FinishPendingRender();
+#endif	
+}
+
+/**
+ * ResetRender
+ */
+void GpuRenderer::FinishPendingRender() {
+	if (!rendering)
+		return;
+	
 	Xe_Sync(xe); // wait for background render to finish !
+	rendering = false;
 
 	Xe_InvalidateState(xe);
 
@@ -854,7 +794,6 @@ void GpuRenderer::Render() {
 	//Xe_SetFillMode(xe,0x25,0x25);
 
 	prevIndicesCount = 0;
-	vbBaseVertexIndex = 0;
 
 	nb_indices = 0;
 	nb_vertices = 0;
@@ -883,11 +822,10 @@ void GpuRenderer::NextIndice() {
 
 void GpuRenderer::primBegin(int primType) {
 	if(m_PrimType!=primType){
-		StatesChanged();
+		SubmitVertices();
+		m_PrimType = primType;
 	}
 	
-	m_PrimType = primType;
-
 	prevVerticesCount = verticesCount();
 };
 
@@ -920,17 +858,13 @@ void GpuRenderer::primEnd() {
 		}
 		case PRIM_RECTLIST:
 		{
-			// don't use indice buffer but fake them
-			for (int i = 0; i < 6; i++) {
-				pCurrentIndice[0] = prevVerticesCount + 0;
+			for (int i = 0; i < 3; i++) {
+				pCurrentIndice[0] = prevVerticesCount + i;
 				NextIndice();
 			}
 			break;
 		}
 	}
-	
-	// submit unsubmitted vertices if needed
-	SubmitVertices();
 };
 
 void GpuRenderer::primTexCoord(float * st) {

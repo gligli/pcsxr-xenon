@@ -11,7 +11,7 @@ endif
 
 include $(DEVKITXENON)/rules
 
-MACHDEP =  -DXENON -m32 -mno-altivec -fno-pic  -fno-pic -mpowerpc64 -mhard-float -L$(DEVKITXENON)/xenon/lib/32 -u read -u _start -u exc_base
+MACHDEP =  -DXENON -m32 -maltivec -fno-pic  -fno-pic -mpowerpc64 -mhard-float -L$(DEVKITXENON)/xenon/lib/32 -u read -u _start -u exc_base
 
 #---------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------

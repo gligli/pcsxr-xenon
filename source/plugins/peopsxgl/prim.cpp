@@ -34,11 +34,12 @@ using namespace xegpu;
 // defines
 ////////////////////////////////////////////////////////////////////////
 
-#define DEFOPAQUEON  gpuRenderer.SetAlphaFunc(XE_CMP_EQUAL,0.0f);bBlendEnable=FALSE;gpuRenderer.DisableBlend();
+#define DEFOPAQUEON  gpuRenderer.SetAlphaFunc(XE_CMP_EQUAL,0.0f);gpuRenderer.DisableBlend();
+#define DEFOPAQUEOFF gpuRenderer.SetAlphaFunc(XE_CMP_GREATER,0.49f);gpuRenderer.EnableBlend();
+
 //#define DEFOPAQUEOFF gpuRenderer.SetAlphaFunc(XE_CMP_GREATER,0.51f);
 //#define DEFOPAQUEOFF gpuRenderer.SetAlphaFunc(XE_CMP_LESS,0.51f);
 //#define DEFOPAQUEON  gpuRenderer.SetAlphaFunc(XE_CMP_EQUAL,0.0f);bBlendEnable=FALSE;gpuRenderer.DisableBlend();~
-#define DEFOPAQUEOFF gpuRenderer.SetAlphaFunc(XE_CMP_GREATER,0.49f);
 //#define DEFOPAQUEOFF gpuRenderer.SetAlphaFunc(XE_CMP_LESS,0.49f);
 namespace xegpu {
     ////////////////////////////////////////////////////////////////////////
@@ -58,8 +59,6 @@ namespace xegpu {
     GLubyte ubGloColAlpha; // color alpha
     BOOL bUseMultiPass; // sign for multi pass
     GpuTex * gTexName; // binded texture
-    BOOL bTexEnabled; // texture enable flag
-    BOOL bBlendEnable; // blend enable flag
     PSXRect_t xrUploadArea; // rect to upload
     PSXRect_t xrUploadAreaIL; // rect to upload
     PSXRect_t xrUploadAreaRGB24; // rect to upload rgb24
@@ -434,7 +433,6 @@ void dumpABR() {
 static void SetSemiTrans(void) {
     if (!DrawSemiTrans) // no semi trans at all?
     {
-        bBlendEnable=FALSE;
         gpuRenderer.DisableBlend();
         // -> don't wanna blend
         ubGloAlpha = ubGloColAlpha = 255; // -> full alpha
@@ -444,7 +442,6 @@ static void SetSemiTrans(void) {
     ubGloAlpha = ubGloColAlpha = TransSets[GlobalTextABR].alpha;
 
     gpuRenderer.EnableBlend();
-    bBlendEnable=TRUE;
 
     gpuRenderer.SetBlendFunc(TransSets[GlobalTextABR].srcFac, TransSets[GlobalTextABR].dstFac);
     gpuRenderer.SetBlendOp(TransSets[GlobalTextABR].blendop);
@@ -523,7 +520,6 @@ void SetSemiTransMulti(int Pass) {
     }
 
     gpuRenderer.EnableBlend();
-    bBlendEnable=TRUE;
 
     gpuRenderer.SetBlendFunc(bm1, bm2);
 }
@@ -655,21 +651,15 @@ static void SetRenderMode(uint32_t DrawAttributes, BOOL bSCol) {
 
         gTexName = currTex;
 
-        if (!bTexEnabled)
-            bTexEnabled = TRUE;
-
-        // -> turn texturing on
-        gpuRenderer.EnableTexture();
+		// -> turn texturing on
+		gpuRenderer.EnableTexture();
 
         gpuRenderer.SetTexture(currTex);
     }
     else
     {
-        // no texture ?
-        if (bTexEnabled)
-            bTexEnabled = FALSE;
-        // -> turn texturing off
-        gpuRenderer.DisableTexture();
+		// -> turn texturing off
+		gpuRenderer.DisableTexture();
     }
 
     if (bSCol) // also set color ?
