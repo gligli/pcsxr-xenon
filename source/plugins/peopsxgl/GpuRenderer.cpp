@@ -323,8 +323,6 @@ void GpuRenderer::UpdatesStates() {
 	Xe_SetStencilWriteMask(xe, 3, 2);
 	Xe_SetStencilOp(xe, 3, -1, XE_STENCILOP_INCR, XE_STENCILOP_ZERO);
 
-	Xe_SetClearColor(xe, m_RenderStates.clearcolor);
-
 	if (m_RenderStates.currentPsShader)
 		Xe_SetShader(xe, SHADER_TYPE_PIXEL, m_RenderStates.currentPsShader, 0);
 	else
@@ -353,8 +351,6 @@ void GpuRenderer::InitStates() {
 	m_RenderStates.alpha_test_func = XE_CMP_NOTEQUAL;
 	m_RenderStates.alpha_test_ref = 0;
 
-	m_RenderStates.clearcolor = 0;
-	m_RenderStates.clear_pending = 0;
 	m_RenderStates.cullmode = XE_CULL_NONE;
 
 	m_RenderStates.fillmode_back = 0;
@@ -485,16 +481,17 @@ void GpuRenderer::DisableTexture() {
  * Clear
  */
 void GpuRenderer::Clear(uint32_t flags) {
-	if ((!m_RenderStates.clear_pending) && (flags & XE_CLEAR_COLOR))
-	{
-		SubmitVertices();
-		m_RenderStates.clear_pending = 1;
-	}
+	SubmitVertices();
+
+	FinishPendingClear();
+	
+	Xe_Clear(xe,flags);
+	Xe_Execute(xe);
+	clearing = true;
 }
 
 void GpuRenderer::ClearColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
-	//Xe_SetClearColor(xe, color);
-	//m_RenderStates.clearcolor = color;
+	FinishPendingClear();
 
 	union {
 		uint8_t c[4];
@@ -506,11 +503,7 @@ void GpuRenderer::ClearColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
 	ucolor.c[2] = g;
 	ucolor.c[3] = r;
 
-	//Xe_SetClearColor(xe, ucolor.u);
-	if (m_RenderStates.clearcolor != ucolor.u) {
-		SubmitVertices();
-		m_RenderStates.clearcolor = ucolor.u;
-	}
+	Xe_SetClearColor(xe,ucolor.u);
 }
 
 // fillmode
@@ -747,18 +740,15 @@ void GpuRenderer::Render() {
 
 	Unlock();
 
+	FinishPendingClear();
+	
 	// Resolve in temporary surface
 	RenderPostProcess();
 
-	if (m_RenderStates.clear_pending)
-		Xe_Resolve(xe);
-	else
-		Xe_ResolveInto(xe, Xe_GetFramebufferSurface(xe), XE_SOURCE_COLOR, XE_CLEAR_DS);
-	
-	m_RenderStates.clear_pending = 0;
-	
 	rendering = true;
 
+	Xe_ResolveInto(xe, Xe_GetFramebufferSurface(xe), XE_SOURCE_COLOR, XE_CLEAR_DS);
+	
 #if 1
 	Xe_Execute(xe); // start background render !
 #else	
@@ -774,6 +764,7 @@ void GpuRenderer::FinishPendingRender() {
 		return;
 	
 	Xe_Sync(xe); // wait for background render to finish !
+	
 	rendering = false;
 
 	Xe_InvalidateState(xe);
@@ -797,6 +788,15 @@ void GpuRenderer::FinishPendingRender() {
 
 	nb_indices = 0;
 	nb_vertices = 0;
+}
+
+void GpuRenderer::FinishPendingClear() {
+	if (clearing)
+	{
+		Xe_Execute(xe); // wait for background clear to finish !
+		Xe_VBReclaim(xe);
+		clearing = false;
+	}
 }
 
 /**

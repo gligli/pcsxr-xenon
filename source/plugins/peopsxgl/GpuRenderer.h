@@ -75,6 +75,7 @@ private:
 	GpuPS * g_pPixelShaderG;
 
 	bool rendering;
+	bool clearing;
 	
 	/**
 	 * Post process
@@ -94,9 +95,6 @@ private:
 		// shader
 		GpuPS * currentPsShader;
 
-		// clear color
-		uint32_t clearcolor;
-		uint32_t clear_pending;
 		// z / depth
 		int32_t z_func;
 		uint32_t z_write;
@@ -218,6 +216,7 @@ public:
 	 * Render
 	 */
 	void FinishPendingRender();
+	void FinishPendingClear();
 	void Render();
 
 	/**
