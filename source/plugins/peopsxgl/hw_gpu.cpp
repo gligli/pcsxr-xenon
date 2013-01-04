@@ -414,7 +414,7 @@ void PaintBlackBorders(void) {
 // has been changed
 ////////////////////////////////////////////////////////////////////////
 
-void updateDisplay(void) // UPDATE DISPLAY
+void _updateDisplay(void) // UPDATE DISPLAY
 {
 	bFakeFrontBuffer = FALSE;
 	bRenderFrontBuffer = FALSE;
@@ -614,7 +614,7 @@ void updateDisplay(void) // UPDATE DISPLAY
 // in the frontbuffer... dirty, but hey... real men know no pain
 ////////////////////////////////////////////////////////////////////////
 
-void updateFrontDisplay(void) {
+void _updateFrontDisplay(void) {
 	if (PreviousPSXDisplay.Range.x0 ||
 			PreviousPSXDisplay.Range.y0)
 		PaintBlackBorders();
@@ -937,7 +937,7 @@ static void ShowFPS() {
 	systemPoll();
 }
 
-void _GPUupdateLace(void) {
+EXTERN void CALLBACK GPUupdateLace(void) {
 	//if(!(peops_cfg.dwActFixes&0x1000))
 	// STATUSREG^=0x80000000;                               // interlaced bit toggle, if the CC game fix is not active (see gpuReadStatus)
 	ShowFPS();
@@ -2065,8 +2065,22 @@ EXTERN long CALLBACK GPUdmaChain(uint32_t *baseAddrL, uint32_t addr) {
 	return 0;
 }
 
-EXTERN void CALLBACK GPUupdateLace(void) {
-	GPUthreadedCall(_GPUupdateLace);
+void updateDisplay(void){
+#if 1
+	GPUthreadedCall(_updateDisplay);
+#else
+	WaitForGpuThread(true);
+	_updateDisplay();
+#endif	
+}
+
+void updateFrontDisplay(void) {
+#if 1
+	GPUthreadedCall(_updateFrontDisplay);
+#else
+	WaitForGpuThread(true);
+	_updateFrontDisplay();
+#endif	
 }
 
 EXTERN void CALLBACK GPUwriteDataMem(uint32_t *pMem, int iSize){
